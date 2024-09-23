@@ -17,222 +17,280 @@
             cursor: url(https://cur.cursors-4u.net/cursors/cur-10/cur965.cur) 16 16, auto !important;
         }
 
-        body {
-            background: url('images/daa.gif') no-repeat center center fixed;
-            background-size: cover;
-            color: white;
-            display: flex;
-            align-items: center;
-            overflow: hidden;
-            justify-content: center;
-            height: 100vh; 
-            margin: 0;
-        }
-        
-        .overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: black;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 2;
-        }
 
-        .wrapper {
-            text-align: center;
-        }
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      overflow: hidden;
+    }
 
-        .wrapper h1 {
-            color: #fff;
-            font-size: 34px;
-            font-weight: 700;
-            font-family: "Josefin Sans", sans-serif;
-            background: linear-gradient(to right, #ffffff 10%, #ffffff 50%);
-            background-clip: text;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: textclip 1.5s linear infinite;
-            display: inline-block;
-        }
+    body {
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh; 
+      position: relative;
+    }
 
-        @keyframes textclip {
-            to {
-                background-position: 200% center;
-            }
-        }
+    .full-screen-gif {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -1;
+    }
 
-        .click-text {
-            color: white;
-            font-size: 2em;
-            animation: glow 0.5s ease-in-out infinite alternate;
-            font-family: 'Sintony', sans-serif;
-        }
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 2;
+    }
 
-        .description-text {
-            color:white;
-            font-family: 'Noto Sans Mono', monospace;
-        }
+    .wrapper {
+      text-align: center;
+      z-index: 3;
+      position: relative;
+      display: none; /* Initially hide wrapper */
+    }
 
-        .fade-out {
-            animation: fadeOut 1s forwards;
-        }
+    .wrapper h1 {
+      color: #fff;
+      font-size: 34px;
+      font-weight: 700;
+      font-family: "Josefin Sans", sans-serif;
+      background: linear-gradient(to right, #000000 10%, #ffffff 50%);
+      background-size: 200% auto;
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: textclip 1.5s linear infinite;
+      display: inline-block;
+      margin: 0;
+    }
 
-        .profile-container {
-            text-align: center;
-            position: relative;
-            background-color:rgba(0, 0, 0, 0.685);
-            padding: 20px;
-            border-radius: 15px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
-            max-width: 340px;
-            width: 100%;
-            border: 1px solid rgb(255, 255, 255);
-        }
+    @keyframes textclip {
+      to {
+        background-position: 200% center;
+      }
+    }
 
-        .profile-picture {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            border: 3px solid #ffffff;
-            display: block;
-            margin: 20px auto;
-        }
+    .click-text {
+      color: white;
+      font-size: 2em;
+      animation: glow 0.5s ease-in-out infinite alternate;
+      font-family: 'Sintony', sans-serif;
+    }
 
-        .social-icons {
-            list-style: none;
-            padding: 0;
-        }
+    .description-text {
+      color: white;
+      font-family: 'Noto Sans Mono', monospace;
+    }
 
-        .social-icons li {
-            display: inline;
-            margin: 0 10px;
-        }
+    .fade-out {
+      animation: fadeOut 1s forwards;
+    }
 
-        .social-icons li a {
-            color: white;
-            text-decoration: none;
-        }
+    .profile-container {
+      text-align: center;
+      position: relative;
+      background-color: rgba(0, 0, 0, 0.685);
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
+      max-width: 340px;
+      width: 100%;
+      border: 1px solid rgb(255, 255, 255);
+    }
 
-        .social-icons li a:hover {
-            text-decoration: underline;
-        }
+    .profile-picture {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      border: 3px solid #ffffff;
+      display: block;
+      margin: 20px auto;
+    }
 
-        .ip-display {
-            margin-top: 20px;
-        }
+    .profile-info {
+      margin: 10px;
+    }
 
-        .line {
-            display: block;
-            width: 155px;
-            height: 2px;
-            background-color: #fff;
-            margin-top: 8px;
-            margin-left: auto;
-            margin-right: auto;
-        }
+    .social-icons {
+      list-style: none;
+      padding: 0;
+    }
 
-        @keyframes glow {
-            from {
-                text-shadow: 0 0 10px white, 0 0 20px white, 0 0 30px white;
-            }
-            to {
-                text-shadow: 0 0 20px white, 0 0 30px white, 0 0 40px white;
-            }
-        }
+    .social-icons li {
+      display: inline;
+      margin: 0 10px;
+    }
 
-        @keyframes fadeOut {
-            to {
-                opacity: 0;
-                visibility: hidden;
-            }
-        }
+    .social-icons li a {
+      color: white;
+      text-decoration: none;
+    }
 
-        /* Tooltip styles */
-        .tooltip {
-            position: relative;
-            display: inline-block;
-        }
+    .social-icons li a:hover {
+      text-decoration: underline;
+    }
 
-        .tooltip .tooltiptext {
-            visibility: hidden;
-            width: 120px;
-            background-color: black;
-            color: #fff;
-            text-align: center;
-            border-radius: 6px;
-            padding: 5px 0;
-            position: absolute;
-            z-index: 1;
-            bottom: 100%; /* Position above the icon */
-            left: 50%;
-            margin-left: -60px;
-            opacity: 0;
-            transition: opacity 0.3s;
-        }
+    .ip-display {
+      margin-top: 20px;
+      position: relative; /* Ensures cursor stays in position */
+      display: flex;
+      justify-content: center; /* Center the text */
+      align-items: center;
+    }
 
-        .tooltip:hover .tooltiptext {
-            visibility: visible;
-            opacity: 1;
-        }
-    </style>
+    .line {
+      display: block;
+      width: 155px;
+      height: 2px;
+      background-color: #fff;
+      margin-top: 8px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .cursor {
+      width: 2px; /* Slimmer cursor */
+      height: 20px;
+      background-color: white;
+      animation: blink 0.7s step-end infinite;
+      margin-left: 5px; /* Space between text and cursor */
+    }
+
+    @keyframes blink {
+      50% {
+        opacity: 0;
+      }
+    }
+
+    @keyframes glow {
+      from {
+        text-shadow: 0 0 10px white, 0 0 20px white, 0 0 30px white;
+      }
+      to {
+        text-shadow: 0 0 20px white, 0 0 30px white, 0 0 40px white;
+      }
+    }
+
+    @keyframes fadeOut {
+      to {
+        opacity: 0;
+        visibility: hidden;
+      }
+    }
+
+    /* Tooltip styling */
+    .verified-container {
+      position: relative;
+      display: inline-block;
+    }
+
+    .verified-tooltip {
+      visibility: hidden;
+      background-color: #555;
+      color: #fff;
+      text-align: center;
+      padding: 5px 10px;
+      border-radius: 5px;
+      position: absolute;
+      z-index: 1;
+      bottom: 150%;
+      left: 50%;
+      transform: translateX(-50%);
+      opacity: 0;
+      transition: opacity 0.3s;
+      white-space: nowrap;
+      font-size: 12px;
+    }
+
+    .verified-container img:hover + .verified-tooltip {
+      visibility: visible;
+      opacity: 1;
+    }
+
+    .image-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 5px;
+    }
+
+    .image-container img {
+      width: 20px;
+      height: 20px;
+      margin: 0 3px;
+    }
+  </style>
 </head>
 
 <body>
-    <link rel="stylesheet" href="css/all.min.css" crossorigin="anonymous">
-    <div class="profile-container">
-        <div id="overlay" class="overlay">
-            <div class="click-text"> ⎛ enter hell with zee ⎞ </div>
-        </div>
-        <img src="images/logooo.png" alt="Profile Picture" class="profile-picture">
-        <div class="profile-info">
-            <div class="wrapper">
-                <h1 style="margin-left: 25px;">zee</h1>
-                <div class="tooltip">
-                    <img src="images/tJo8M2c.gif" style="width: 25px; height: 25px; margin-left: 10px;">
-                    <span class="tooltiptext">verified</span>
-                </div>
-            </div>
-            <div class="description-text" style="background-image: url('images/sparkle.gif');">kill | 6600 | ddos | fraud</div>
-        </div>
-        <ul class="social-icons">
-            <li><a href="https://discord.gg/BNNvUrabyD" target="_blank"><img src="imageedit_6_7624522617.png" alt="Discord" class="clickable-image"></a></li>
-            <li><a href="https://www.roblox.com/users/3040857301/profile" target="_blank"><img src="imageedit_10_2942659023.png" alt="Roblox" class="clickable-image"></a></li>
-            <li><a href="https://open.spotify.com/playlist/5MAoRRl6XNiI5lkpCofGgX" target="_blank"><img src="imageedit_8_7127073482.png" alt="Spotify" class="clickable-image"></a></li>
-        </ul>
-        
-        <div class="line"></div>
-        <div class="ip-display">
-            <p>owner of swats.lol</p> <span id="user-ip"></span>
-        </div>
-        <div class="website-link"></div>
-    </div>
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-    <link href="https://fonts.googleapis.com/css2?family=Sintony:wght@700&display=swap" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Mono&display=swap" rel="stylesheet">
-    
-    <audio id="background-music" src="media/sound.mp3" loop preload="auto"></audio>
-    
-    <script>
-        const overlay = document.getElementById('overlay');
-        overlay.addEventListener('click', function() {
-            const audio = document.getElementById('background-music');
-            audio.play();
-            this.classList.add('fade-out');
-            setTimeout(() => {
-                overlay.style.display = 'none'; // Hide the overlay instead of removing it
-            }, 1000); 
-        });
-    </script>
-    
-    <script type="a64f735c548548804ee53554-text/javascript">
+  <link rel="stylesheet" href="css/all.min.css" crossorigin="anonymous">
+  
+  <img src="media/daa.gif" alt="GIF Background" class="full-screen-gif">
+
+  <div class="profile-container">
+    <div id="overlay" class="overlay">
+      <div class="click-text">⎛ enter hell with zee ⎞</div>
+    </div>
+    <div class="wrapper">
+      <img src="images/logooo.png" alt="Profile Picture" class="profile-picture">
+      <div class="profile-info">
+        <div class="image-container">
+          <div class="verified-container">
+            <img src="images/tJo8M2c.gif"> 
+            <span class="verified-tooltip">Verified</span>
+          </div>
+          <div class="verified-container">
+            <img src="images/image.png">
+            <span class="verified-tooltip">Developer</span>
+          </div>
+        </div>
+        <div class="verified-container">
+          <img src="images/owneremoji.png">
+          <span class="verified-tooltip">Owner</span>
+        </div>
+      </div>
+
+        <h1 id="username-display">zee</h1>
+        <div class="description-text">kill | 6600 | ddos | fraud</div>
+      </div>
+      <ul class="social-icons">
+        <a href="https://discord.gg/BNNvUrabyD" target="_blank">
+          <img src="world.gif" alt="Clickable Image" class="clickable-image">
+        </a>
+      </ul>
+      <div class="line"></div>
+      <div class="ip-display">
+        <p id="dynamic-text" style="margin: 0;"></p> <!-- Start blank -->
+        <div class="cursor"></div> <!-- Blinking cursor -->
+        <span id="user-ip"></span>
+      </div>
+    </div>
+  </div>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link href="https://fonts.googleapis.com/css2?family=Sintony:wght@700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Mono&display=swap" rel="stylesheet">
+  
+  <audio id="background-music" src="media/sound.mp3" loop preload="auto"></audio>
+  
+  <script type="text/javascript">
         var colour = "#ffffff";
         var sparkles = 128;
       
@@ -412,35 +470,70 @@
       }
       // ]]>
       </script>
-      
-    
-    
-      
-      <script disable-devtool-auto="" src="https://cdn.jsdelivr.net/npm/disable-devtool@latest" type="a64f735c548548804ee53554-text/javascript"></script>
-      
-      <script type="a64f735c548548804ee53554-text/javascript">
-        const original = "zee doxxed you ";
-        let index = 0;
-      
-        function animateTitle() {
-          const title = document.title;
-          if (index < originalTitle.length) {
-            document.title = title + originalTitle[index];
-            index++;
-            setTimeout(animateTitle, 200);
-          } else {
-            setTimeout(resetTitle, 1000);
-          }
+      <script>
+    const overlay = document.getElementById('overlay');
+    const wrapper = document.querySelector('.wrapper');
+    const dynamicText = document.getElementById('dynamic-text');
+
+    const texts = ["owner of swats.lol", "harm"];
+    let currentTextIndex = 0;
+    const typingSpeed = 150; // Slowed typing speed
+    const backspaceSpeed = 75; // Speed for backspacing
+
+    function typeWriter(text, callback) {
+      dynamicText.textContent = ""; // Clear text
+      let i = 0;
+
+      function typing() {
+        if (i < text.length) {
+          dynamicText.textContent += text.charAt(i);
+          i++;
+          setTimeout(typing, typingSpeed);
+        } else {
+          callback();
         }
-      
-        function resetTitle() {
-          document.title = " ";
-          index = 0;
-          setTimeout(animateTitle, 1000);
+      }
+      typing();
+    }
+
+    function backspace(callback) {
+      let i = dynamicText.textContent.length;
+
+      function erase() {
+        if (i >= 0) {
+          dynamicText.textContent = dynamicText.textContent.substring(0, i - 1);
+          i--;
+          setTimeout(erase, backspaceSpeed);
+        } else {
+          callback();
         }
-      
-        animateTitle();
-      </script>
-      <script src="js/rocket-loader.min.js" data-cf-settings="a64f735c548548804ee53554-|49" defer=""></script></body></html>
+      }
+      erase();
+    }
+
+    function cycleText() {
+      typeWriter(texts[currentTextIndex], () => {
+        setTimeout(() => {
+          backspace(() => {
+            currentTextIndex = (currentTextIndex + 1) % texts.length;
+            cycleText();
+          });
+        }, 1000); // Pause before backspacing
+      });
+    }
+
+    overlay.addEventListener('click', function() {
+      const audio = document.getElementById('background-music');
+      audio.play().catch(error => {
+        console.log('Audio playback failed:', error);
+      });
+      this.classList.add('fade-out');
+      setTimeout(() => {
+        overlay.remove();
+        wrapper.style.display = 'block';
+        cycleText(); // Start the typewriter effect after the overlay fades out
+      }, 1000);
+    });
+  </script>
 </body>
 </html>
