@@ -18,6 +18,7 @@
       cursor: url(https://cur.cursors-4u.net/cursors/cur-10/cur965.cur), 
               url(https://cur.cursors-4u.net/cursors/cur-10/cur965.png), 
               auto !important;
+              user-select: none; /* Disable text highlighting */
     }
 
     body, html {
@@ -243,14 +244,14 @@
 
   <link rel="stylesheet" href="css/all.min.css" crossorigin="anonymous">
   
-  <img src="media/skulls.gif" alt="GIF Background" class="full-screen-gif">
+  <img src="media/IMG_1009.gif" alt="GIF Background" class="full-screen-gif">
 
   <div class="profile-container">
     <div id="overlay" class="overlay">
-      <div class="click-text"> ⎛click anywhere⎞ </div>
+      <div class="click-text"> ⎛$CLICK TO ENTER$⎞ </div>
     </div>
     <div class="wrapper">
-      <img src="images/jew.png" alt="Profile Picture" class="profile-picture">
+      <img src="images/511c413510070ba2cdb018b737fc8388.gif" alt="Profile Picture" class="profile-picture">
       <div class="profile-info">
         <div class="image-container">
           <div class="verified-container">
@@ -262,8 +263,8 @@
             <span class="verified-tooltip">Developer</span>
           </div>
           <div class="verified-container">
-            <img src="images/owneremoji.png" alt="Owner Emoji">
-            <span class="verified-tooltip">Owner</span>
+            <img src="images/swatter.png" alt="Swats Emoji">
+            <span class="verified-tooltip">Swatter</span>
           </div>
         </div>
         
@@ -332,6 +333,7 @@
         if (star.y < 0) star.y = window.innerHeight;
       }
     }
+  
 
     var overlay = document.getElementById("overlay");
     var wrapper = document.querySelector(".wrapper");
@@ -343,16 +345,55 @@
       audio.play();
     });
 
-    setInterval(function() {
-      var now = new Date();
-      var hours = now.getHours();
-      var minutes = now.getMinutes();
-      var seconds = now.getSeconds();
-      var timeString = (hours < 10 ? '0' : '') + hours + ':' +
-        (minutes < 10 ? '0' : '') + minutes + ':' +
-        (seconds < 10 ? '0' : '') + seconds;
-      document.getElementById("dynamic-text").textContent = timeString;
-    }, 1000);
-  </script>
-</body>
-</html>
+  var messages = ["Developing..", "Giving up..."];
+  var messageIndex = 0;
+  var charIndex = 0;
+  var textDisplay = document.getElementById("dynamic-text");
+  var typingSpeed = 100; // Speed of typing in milliseconds
+
+  function typeWriter() {
+    if (charIndex < messages[messageIndex].length) {
+      textDisplay.textContent += messages[messageIndex].charAt(charIndex);
+      charIndex++;
+      setTimeout(typeWriter, typingSpeed);
+    } else {
+      // After completing one message, wait 2 seconds before deleting
+      setTimeout(eraseText, 2000);
+    }
+  }
+
+  function eraseText() {
+    if (charIndex > 0) {
+      textDisplay.textContent = messages[messageIndex].substring(0, charIndex - 1);
+      charIndex--;
+      setTimeout(eraseText, typingSpeed);
+    } else {
+      // Move to the next message or reset to the first one
+      messageIndex = (messageIndex + 1) % messages.length;
+      setTimeout(typeWriter, 500); // Start typing the next message
+    }
+  }
+
+  // Start the typewriter effect
+  typeWriter();
+
+
+// Disable right-click
+document.addEventListener("contextmenu", function(e) {
+    e.preventDefault();
+}, false);
+
+// Disable certain key combinations (F12, Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+U)
+document.addEventListener("keydown", function(e) {
+    // Disable F12
+    if (e.keyCode == 123) {
+        e.preventDefault();
+    }
+    // Disable Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+U
+    if (e.ctrlKey && (e.shiftKey && (e.keyCode == 73 || e.keyCode == 74)) || e.keyCode == 85) {
+        e.preventDefault();
+    }
+}, false);
+</script>
+
+</script>
