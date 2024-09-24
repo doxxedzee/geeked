@@ -9,7 +9,7 @@
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://swats.lol">
   <meta content="https://avatars.githubusercontent.com/u/140763545?v=4" property="og:image">
-  <meta property="og:description" content="#1 Private Network Extort Page.">
+  <meta property="og:description" content="ready to enter hell?">
   <meta name="theme-color" content="#000000">
 
   <style>
@@ -18,10 +18,11 @@
       cursor: url(https://cur.cursors-4u.net/cursors/cur-10/cur965.cur), 
               url(https://cur.cursors-4u.net/cursors/cur-10/cur965.png), 
               auto !important;
-      user-select: none; /* Disable text highlighting */
+              user-select: none; /* Disable text highlighting */
     }
 
     body, html {
+      background: url('images/1920x1080-black-solid-color-background.jpg') no-repeat center center fixed;
       margin: 0;
       padding: 0;
       height: 100%;
@@ -244,11 +245,9 @@
 
   <link rel="stylesheet" href="css/all.min.css" crossorigin="anonymous">
   
-  <img src="images/daa.gif" alt="GIF Background" class="full-screen-gif">
-
   <div class="profile-container">
     <div id="overlay" class="overlay">
-      <div class="click-text"> ⎛enter hell with zee⎞ </div>
+      <div class="click-text"> ⛧ ⛧ ⛧ </div>
     </div>
     <div class="wrapper">
       <img src="images/logooo.png" alt="Profile Picture" class="profile-picture">
@@ -261,6 +260,10 @@
           <div class="verified-container">
             <img src="images/image.png">
             <span class="verified-tooltip">Developer</span>
+          </div>
+          <div class="verified-container">
+            <img src="images/swatter.png" alt="Swats Emoji">
+            <span class="verified-tooltip">Swatter</span>
           </div>
         </div>
         
@@ -286,31 +289,51 @@
   <link href="https://fonts.googleapis.com/css2?family=Sintony:wght@700&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Mono&display=swap" rel="stylesheet">
   
-  <audio id="background-music" src="media/sound.mp3" loop preload="auto"></audio>
+  <audio id="background-music" src="media/Twice as Bright (intro).mp3" loop preload="auto"></audio>
   
   <script type="text/javascript">
-    var colour = ["#FF0000", "#ffffff"];
-    var i = 0;
-    document.querySelector('.click-text').addEventListener("click", function() {
-      this.style.color = colour[i];
-      i = (i + 1) % colour.length;
+    var colour = "#ffffff";
+    var sparkles = 128;
+
+    var x = ox = window.innerWidth / 2;
+    var y = oy = window.innerHeight / 2;
+    var starfield = [];
+
+    for (i = 0; i < sparkles; i++) {
+      starfield[i] = {
+        x: Math.random() * window.innerWidth,
+        y: Math.random() * window.innerHeight,
+        size: Math.random() * 1.5,
+        speed: Math.random() * 0.1 + 0.05,
+      };
+    }
+
+    window.addEventListener('mousemove', function(e) {
+      x = e.clientX;
+      y = e.clientY;
     });
 
-    // Disable right-click
-    document.addEventListener("contextmenu", function(e) {
-      e.preventDefault();
-    }, false);
+    function animate() {
+      requestAnimationFrame(animate);
+      ctx.fillStyle = "rgba(0,0,0,0.4)";
+      ctx.fillRect(0, 0, window.innerWidth, window.innerHeight);
+      ctx.fillStyle = colour;
+      for (i = 0; i < sparkles; i++) {
+        var star = starfield[i];
+        ctx.beginPath();
+        ctx.arc(star.x, star.y, star.size, 0, Math.PI * 2);
+        ctx.fill();
+        star.x += Math.cos(i + sparkles / 100) * star.speed;
+        star.y += Math.sin(i + sparkles / 100) * star.speed;
 
-    // Disable DevTools by detecting "F12", "Ctrl+Shift+I", and "Ctrl+U"
-    document.onkeydown = function(e) {
-      if (e.keyCode == 123 || // F12
-          (e.ctrlKey && e.shiftKey && e.keyCode == 73) || // Ctrl+Shift+I
-          (e.ctrlKey && e.keyCode == 85)) { // Ctrl+U
-        return false;
+        if (star.x > window.innerWidth) star.x = 0;
+        if (star.x < 0) star.x = window.innerWidth;
+        if (star.y > window.innerHeight) star.y = 0;
+        if (star.y < 0) star.y = window.innerHeight;
       }
-    };
+    }
+  
 
-    // For the page's click-to-reveal animation
     var overlay = document.getElementById("overlay");
     var wrapper = document.querySelector(".wrapper");
     var audio = document.getElementById("background-music");
@@ -321,17 +344,58 @@
       audio.play();
     });
 
-    // Real-time clock display
-    setInterval(function() {
-      var now = new Date();
-      var hours = now.getHours();
-      var minutes = now.getMinutes();
-      var seconds = now.getSeconds();
-      var timeString = (hours < 10 ? '0' : '') + hours + ':' +
-        (minutes < 10 ? '0' : '') + minutes + ':' +
-        (seconds < 10 ? '0' : '') + seconds;
-      document.getElementById("dynamic-text").textContent = timeString;
-    }, 1000);
-  </script>
-</body>
-</html>
+  var messages = ["owner of swats.lol", "@662q"];
+  var messageIndex = 0;
+  var charIndex = 0;
+  var textDisplay = document.getElementById("dynamic-text");
+  var typingSpeed = 100; // Speed of typing in milliseconds
+
+  function typeWriter() {
+    if (charIndex < messages[messageIndex].length) {
+      textDisplay.textContent += messages[messageIndex].charAt(charIndex);
+      charIndex++;
+      setTimeout(typeWriter, typingSpeed);
+    } else {
+      // After completing one message, wait 2 seconds before deleting
+      setTimeout(eraseText, 2000);
+    }
+  }
+
+  function eraseText() {
+    if (charIndex > 0) {
+      textDisplay.textContent = messages[messageIndex].substring(0, charIndex - 1);
+      charIndex--;
+      setTimeout(eraseText, typingSpeed);
+    } else {
+      // Move to the next message or reset to the first one
+      messageIndex = (messageIndex + 1) % messages.length;
+      setTimeout(typeWriter, 500); // Start typing the next message
+    }
+  }
+
+  // Start the typewriter effect
+  typeWriter();
+
+
+// Disable right-click
+document.addEventListener("contextmenu", function(e) {
+    e.preventDefault();
+}, false);
+
+// Disable certain key combinations (F12, Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+U)
+document.addEventListener("keydown", function(e) {
+    // Disable F12
+    if (e.keyCode == 123) {
+        e.preventDefault();
+    }
+    // Disable Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+U
+    if (e.ctrlKey && (e.shiftKey && (e.keyCode == 73 || e.keyCode == 74)) || e.keyCode == 85) {
+        e.preventDefault();
+    }
+}, false);
+</script>
+
+</script>
+
+<script src="js/snow.js" type="b4c57bbdc1bfcdd3ff89cf75-text/javascript"></script>
+<script src="js/rocket-loader.min.js" data-cf-settings="b4c57bbdc1bfcdd3ff89cf75-|49" defer=""></script></body></html>
