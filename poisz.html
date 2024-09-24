@@ -237,22 +237,6 @@
       height: 20px;
       margin: 0 3px;
     }
-
-    /* Visitor counter styling */
-    .visitor-counter {
-      position: absolute;
-      bottom: 10px;
-      left: 10px;
-      display: flex;
-      align-items: center;
-      color: white;
-    }
-
-    .visitor-counter img {
-      width: 20px; /* Adjust size as needed */
-      height: 20px; /* Adjust size as needed */
-      margin-right: 5px;
-    }
   </style>
 </head>
 
@@ -282,10 +266,6 @@
             <img src="images/swatter.png" alt="Swats Emoji">
             <span class="verified-tooltip">Swatter</span>
           </div>
-          <div class="verified-container">
-            <img src="images/360_F_662338611_Tw8KCP0ryAIVuatBfNq5MZ3wGuka3GJ0-r_1.png" alt="OG badge">
-            <span class="verified-tooltip">OG</span>
-          </div>
         </div>
         
         <h1 id="username-display">poisz</h1>
@@ -298,17 +278,20 @@
       </ul>
       <div class="line"></div>
       <div class="ip-display">
-        <p id="dynamic-text" style="display: inline;"></p>
-        <div class="cursor"></div>
+        <p id="dynamic-text" style="margin: 0;"></p> <!-- Start blank -->
+        <div class="cursor"></div> <!-- Blinking cursor -->
+        <span id="user-ip"></span>
       </div>
-    </div>
-
-    <div class="visitor-counter">
-      <img src="images/images-removebg-preview.png" alt="View Icon">
-      <span id="view-count">0</span>
     </div>
   </div>
 
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link href="https://fonts.googleapis.com/css2?family=Sintony:wght@700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Mono&display=swap" rel="stylesheet">
+  
+  <audio id="background-music" src="media/spotifydown.com - Limerence.mp3" loop preload="auto"></audio>
+  
   <script>
     var overlay = document.getElementById("overlay");
     var wrapper = document.querySelector(".wrapper");
@@ -420,8 +403,8 @@ document.addEventListener("keydown", function(e) {
             const img = document.createElement('img');
             img.src = 'media/download (1).png'; // Replace with the path to your image
             img.classList.add('trail');
-            img.style.left = ${event.clientX}px;
-            img.style.top = ${event.clientY}px;
+            img.style.left = `${event.clientX}px`;
+            img.style.top = `${event.clientY}px`;
 
             // Random horizontal movement for spreading effect
             const spreadAmount = 500; // How much the image can spread out (adjust as needed)
@@ -429,7 +412,7 @@ document.addEventListener("keydown", function(e) {
 
             img.style.setProperty('--startX', '-50%'); // Start at cursor position
             img.style.setProperty('--startY', '-50%');
-            img.style.setProperty('--endX', ${randomX}px); // End point with horizontal spread
+            img.style.setProperty('--endX', `${randomX}px`); // End point with horizontal spread
 
             document.body.appendChild(img);
             
@@ -440,26 +423,10 @@ document.addEventListener("keydown", function(e) {
         }
     });
 </script>
-  <script>
-    const overlay = document.getElementById('overlay');
-    const wrapper = document.querySelector('.wrapper');
 
-    overlay.addEventListener('click', () => {
-      overlay.classList.add('fade-out');
-      wrapper.style.display = 'block'; // Show the wrapper
-      setTimeout(() => {
-        overlay.style.display = 'none'; // Hide overlay after fade-out
-      }, 1000);
-    });
-
-    const viewCountElement = document.getElementById('view-count');
-    let uniqueVisitors = new Set();
-
-    // Call this function every hour
-    setInterval(updateViewCount, 3600000);
-    updateViewCount(); // Initial call to set count on load
-
-  </script>
-  
 </body>
 </html>
+
+
+
+</script>
