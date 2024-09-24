@@ -18,6 +18,7 @@
       cursor: url(https://cur.cursors-4u.net/cursors/cur-10/cur965.cur), 
               url(https://cur.cursors-4u.net/cursors/cur-10/cur965.png), 
               auto !important;
+      user-select: none; /* Disable text highlighting */
     }
 
     body, html {
@@ -292,47 +293,28 @@
   <audio id="background-music" src="media/sound.mp3" loop preload="auto"></audio>
   
   <script type="text/javascript">
-    var colour = "#ffffff";
-    var sparkles = 128;
-
-    var x = ox = window.innerWidth / 2;
-    var y = oy = window.innerHeight / 2;
-    var starfield = [];
-
-    for (i = 0; i < sparkles; i++) {
-      starfield[i] = {
-        x: Math.random() * window.innerWidth,
-        y: Math.random() * window.innerHeight,
-        size: Math.random() * 1.5,
-        speed: Math.random() * 0.1 + 0.05,
-      };
-    }
-
-    window.addEventListener('mousemove', function(e) {
-      x = e.clientX;
-      y = e.clientY;
+    var colour = ["#FF0000", "#ffffff"];
+    var i = 0;
+    document.querySelector('.click-text').addEventListener("click", function() {
+      this.style.color = colour[i];
+      i = (i + 1) % colour.length;
     });
 
-    function animate() {
-      requestAnimationFrame(animate);
-      ctx.fillStyle = "rgba(0,0,0,0.4)";
-      ctx.fillRect(0, 0, window.innerWidth, window.innerHeight);
-      ctx.fillStyle = colour;
-      for (i = 0; i < sparkles; i++) {
-        var star = starfield[i];
-        ctx.beginPath();
-        ctx.arc(star.x, star.y, star.size, 0, Math.PI * 2);
-        ctx.fill();
-        star.x += Math.cos(i + sparkles / 100) * star.speed;
-        star.y += Math.sin(i + sparkles / 100) * star.speed;
+    // Disable right-click
+    document.addEventListener("contextmenu", function(e) {
+      e.preventDefault();
+    }, false);
 
-        if (star.x > window.innerWidth) star.x = 0;
-        if (star.x < 0) star.x = window.innerWidth;
-        if (star.y > window.innerHeight) star.y = 0;
-        if (star.y < 0) star.y = window.innerHeight;
+    // Disable DevTools by detecting "F12", "Ctrl+Shift+I", and "Ctrl+U"
+    document.onkeydown = function(e) {
+      if (e.keyCode == 123 || // F12
+          (e.ctrlKey && e.shiftKey && e.keyCode == 73) || // Ctrl+Shift+I
+          (e.ctrlKey && e.keyCode == 85)) { // Ctrl+U
+        return false;
       }
-    }
+    };
 
+    // For the page's click-to-reveal animation
     var overlay = document.getElementById("overlay");
     var wrapper = document.querySelector(".wrapper");
     var audio = document.getElementById("background-music");
@@ -343,6 +325,7 @@
       audio.play();
     });
 
+    // Real-time clock display
     setInterval(function() {
       var now = new Date();
       var hours = now.getHours();
@@ -354,7 +337,5 @@
       document.getElementById("dynamic-text").textContent = timeString;
     }, 1000);
   </script>
-      <script disable-devtool-auto="" src="https://cdn.jsdelivr.net/npm/disable-devtool@latest" type="a64f735c548548804ee53554-text/javascript"></script>    
-
 </body>
 </html>
