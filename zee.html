@@ -37,15 +37,17 @@
       position: relative;
     }
 
-    .full-screen-gif {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      z-index: -1;
-    }
+    video {
+            position: absolute; /* Position it absolutely */
+            top: 50%; /* Center it vertically */
+            left: 50%; /* Center it horizontally */
+            min-width: 100%; /* Make it cover the full width */
+            min-height: 100%; /* Make it cover the full height */
+            width: auto; /* Auto width */
+            height: auto; /* Auto height */
+            transform: translate(-50%, -50%); /* Center the video */
+            z-index: -1; /* Send it to the back */
+        }
 
     .overlay {
       position: fixed;
@@ -105,29 +107,64 @@
     }
 
     .profile-container {
-      text-align: center;
-      position: relative;
-      background-color: rgba(0, 0, 0, 0.685);
-      padding: 20px;
-      border-radius: 15px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
-      max-width: 340px;
-      width: 100%;
-      border: 1px solid rgb(255, 255, 255);
-    }
+    position: relative; /* Ensure relative positioning for pseudo-element */
+    text-align: center;
+    padding: 20px 20px 10px; /* Reduced padding for height */
+    border-radius: 15px; /* More pronounced rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.8); /* Darker shadow for depth */
+    max-width: 400px; /* Keep the width */
+    max-height: 350px; /* Set a max height to reduce the overall height */
+    width: 90%; /* Make it responsive */
+    border: 2px solid rgb(255, 255, 255); /* Slightly thicker border */
+    z-index: 3; /* Ensures it is on top */
+}
 
-    .profile-picture {
-      width: 150px;
-      height: 150px;
-      border-radius: 50%;
-      border: 3px solid #ffffff;
-      display: block;
-      margin: 20px auto;
-    }
+/* Pseudo-element for blurry dark background */
+.profile-container::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.8); /* Darker background */
+    backdrop-filter: blur(10px); /* Add a blur effect */
+    border-radius: 15px; /* Match the container's border radius */
+    z-index: -1; /* Place behind the container content */
+}
 
-    .profile-info {
-      margin: 10px;
-    }
+/* Adjust overlay styles if necessary */
+.overlay {
+    background-color: rgba(0, 0, 0, 1); /* Dont touch this line thxx */
+}
+
+.profile-picture {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  border: 3px solid #ffffff;
+  display: block;
+  margin: -125px auto 20px; /* Pulls the picture upwards */
+  z-index: 4; /* Ensure it's above the container */
+}
+
+.username-and-badge {
+    display: flex; /* Use flexbox for alignment */
+    align-items: center; /* Center items vertically */
+}
+
+.profile-info {
+    display: flex;
+    flex-direction: column; /* Stack items vertically */
+    align-items: center; /* Center align */
+    margin: 10px 0; /* Optional: Adjust margin for spacing */
+}
+
+.badges-container {
+    display: flex; /* Arrange badges in a row */
+    align-items: center; /* Center vertically */
+    margin-left: 10px; /* Space between username and badge */
+}
 
     .social-icons {
       list-style: none;
@@ -237,6 +274,28 @@
       height: 20px;
       margin: 0 3px;
     }
+    
+
+    .image-container {
+  display: flex; /* Use flexbox to arrange badges */
+  align-items: center; /* Center vertically */
+}
+
+.badges-container {
+  display: flex; /* Arrange badges in a row */
+  align-items: center; /* Center vertically */
+  background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent white */
+  border-radius: 10px; /* Rounded corners */
+  padding: 5px; /* Padding around badges */
+  backdrop-filter: blur(8px); /* Blurring effect */
+}
+
+.verified-container {
+  display: flex; /* Make it a flex container */
+  align-items: center; /* Center items vertically */
+  padding: 5px; /* Adjust padding */
+  margin: 0; /* No margin between badges */
+}
   </style>
 </head>
 
@@ -244,32 +303,42 @@
 
   <link rel="stylesheet" href="css/all.min.css" crossorigin="anonymous">
   
-  <img src="images/daa.gif" alt="GIF Background" class="full-screen-gif">
+  <video autoplay loop muted>
+    <source src="media/c8304c0b-cb38-4316-af3a-4322c4bac1ea.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
 
   <div class="profile-container">
     <div id="overlay" class="overlay">
-      <div class="click-text"> ⛧ ⛧ ⛧ </div>
+      <div class="click-text"> 卍 ༺☆༻ 卍 </div>
     </div>
     <div class="wrapper">
       <img src="images/6b17950644752d06ba567eb11b31d37d.png" alt="Profile Picture" class="profile-picture">
       <div class="profile-info">
         <div class="image-container">
-          <div class="verified-container">
-            <img src="images/tJo8M2c.gif"> 
-            <span class="verified-tooltip">Verified</span>
-          </div>
-          <div class="verified-container">
-            <img src="images/image.png">
-            <span class="verified-tooltip">Developer</span>
-          </div>
-          <div class="verified-container">
-            <img src="images/swatter.png" alt="Swats Emoji">
-            <span class="verified-tooltip">Swatter</span>
+          <div class="badges-container">
+            <div class="verified-container">
+              <img src="images/tJo8M2c.gif"> 
+              <span class="verified-tooltip">Verified</span>
+            </div>
+            <div class="verified-container">
+              <img src="images/image.png">
+              <span class="verified-tooltip">Developer</span>
+            </div>
+            <div class="verified-container">
+              <img src="images/swatter.png" alt="Swats Emoji">
+              <span class="verified-tooltip">Swatter</span>
+            </div>
+            <div class="verified-container">
+              <img src="images/OGG2.png" alt="Og Emoji">
+              <span class="verified-tooltip">OG</span>
+            </div>
           </div>
         </div>
+      </div>
         
-        <h1 id="username-display">zee</h1>
-        <div class="description-text">kill | 6600 | ddos | fraud</div>
+        <h1 id="username-display">isis</h1>
+        <div class="description-text">money launder, get rich</div>
       </div>
       <ul class="social-icons">
         <a href="https://discord.gg/TsPJEhfRYG" target="_blank">
@@ -290,7 +359,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Sintony:wght@700&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Mono&display=swap" rel="stylesheet">
   
-  <audio id="background-music" src="media/Twice as Bright (intro).mp3" loop preload="auto"></audio>
+  <audio id="background-music" src="media/c8304c0b-cb38-4316-af3a-4322c4bac1ea.mp3" loop preload="auto"></audio>
   
   <script>
     var overlay = document.getElementById("overlay");
@@ -303,7 +372,7 @@
       audio.play();
     });
 
-  var messages = ["owner of swats.lol", "@632q", "osint tools"];
+  var messages = ["owner of swats.lol", "isis@hatesje.ws", "@662q"];
   var messageIndex = 0;
   var charIndex = 0;
   var textDisplay = document.getElementById("dynamic-text");
@@ -400,7 +469,7 @@ document.addEventListener("keydown", function(e) {
 
             // Create an img element for the trail
             const img = document.createElement('img');
-            img.src = 'media/download.png'; // Replace with the path to your image
+            img.src = 'media/download (1).png'; // Replace with the path to your image
             img.classList.add('trail');
             img.style.left = `${event.clientX}px`;
             img.style.top = `${event.clientY}px`;
