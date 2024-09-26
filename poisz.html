@@ -105,29 +105,64 @@
     }
 
     .profile-container {
-      text-align: center;
-      position: relative;
-      background-color: rgba(0, 0, 0, 0.685);
-      padding: 20px;
-      border-radius: 15px;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
-      max-width: 340px;
-      width: 100%;
-      border: 1px solid rgb(255, 255, 255);
-    }
+    position: relative; /* Ensure relative positioning for pseudo-element */
+    text-align: center;
+    padding: 20px 20px 10px; /* Reduced padding for height */
+    border-radius: 15px; /* More pronounced rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.8); /* Darker shadow for depth */
+    max-width: 400px; /* Keep the width */
+    max-height: 350px; /* Set a max height to reduce the overall height */
+    width: 90%; /* Make it responsive */
+    border: 2px solid rgb(255, 255, 255); /* Slightly thicker border */
+    z-index: 3; /* Ensures it is on top */
+}
 
-    .profile-picture {
-      width: 150px;
-      height: 150px;
-      border-radius: 50%;
-      border: 3px solid #ffffff;
-      display: block;
-      margin: 20px auto;
-    }
+/* Pseudo-element for blurry dark background */
+.profile-container::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.8); /* Darker background */
+    backdrop-filter: blur(10px); /* Add a blur effect */
+    border-radius: 15px; /* Match the container's border radius */
+    z-index: -1; /* Place behind the container content */
+}
 
-    .profile-info {
-      margin: 10px;
-    }
+/* Adjust overlay styles if necessary */
+.overlay {
+    background-color: rgba(0, 0, 0, 1); /* Dont touch this line thxx */
+}
+
+.profile-picture {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  border: 3px solid #ffffff;
+  display: block;
+  margin: -125px auto 20px; /* Pulls the picture upwards */
+  z-index: 4; /* Ensure it's above the container */
+}
+
+.username-and-badge {
+    display: flex; /* Use flexbox for alignment */
+    align-items: center; /* Center items vertically */
+}
+
+.profile-info {
+    display: flex;
+    flex-direction: column; /* Stack items vertically */
+    align-items: center; /* Center align */
+    margin: 10px 0; /* Optional: Adjust margin for spacing */
+}
+
+.badges-container {
+    display: flex; /* Arrange badges in a row */
+    align-items: center; /* Center vertically */
+    margin-left: 10px; /* Space between username and badge */
+}
 
     .social-icons {
       list-style: none;
@@ -237,6 +272,28 @@
       height: 20px;
       margin: 0 3px;
     }
+    
+
+    .image-container {
+  display: flex; /* Use flexbox to arrange badges */
+  align-items: center; /* Center vertically */
+}
+
+.badges-container {
+  display: flex; /* Arrange badges in a row */
+  align-items: center; /* Center vertically */
+  background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent white */
+  border-radius: 10px; /* Rounded corners */
+  padding: 5px; /* Padding around badges */
+  backdrop-filter: blur(8px); /* Blurring effect */
+}
+
+.verified-container {
+  display: flex; /* Make it a flex container */
+  align-items: center; /* Center items vertically */
+  padding: 5px; /* Adjust padding */
+  margin: 0; /* No margin between badges */
+}
   </style>
 </head>
 
@@ -254,19 +311,26 @@
       <img src="images/511c413510070ba2cdb018b737fc8388.gif" alt="Profile Picture" class="profile-picture">
       <div class="profile-info">
         <div class="image-container">
-          <div class="verified-container">
-            <img src="images/tJo8M2c.gif"> 
-            <span class="verified-tooltip">Verified</span>
-          </div>
-          <div class="verified-container">
-            <img src="images/image.png">
-            <span class="verified-tooltip">Developer</span>
-          </div>
-          <div class="verified-container">
-            <img src="images/swatter.png" alt="Swats Emoji">
-            <span class="verified-tooltip">Swatter</span>
+          <div class="badges-container">
+            <div class="verified-container">
+              <img src="images/tJo8M2c.gif"> 
+              <span class="verified-tooltip">Verified</span>
+            </div>
+            <div class="verified-container">
+              <img src="images/image.png">
+              <span class="verified-tooltip">Developer</span>
+            </div>
+            <div class="verified-container">
+              <img src="images/swatter.png" alt="Swats Emoji">
+              <span class="verified-tooltip">Swatter</span>
+            </div>
+            <div class="verified-container">
+              <img src="images/OGG2.png" alt="Og Emoji">
+              <span class="verified-tooltip">OG</span>
+            </div>
           </div>
         </div>
+      </div>
         
         <h1 id="username-display">poisz</h1>
         <div class="description-text">get money, scam scammers</div>
@@ -303,7 +367,7 @@
       audio.play();
     });
 
-  var messages = ["Developing..", "Giving up..."];
+  var messages = [".", "..", "...", "....", ".....", "......"];
   var messageIndex = 0;
   var charIndex = 0;
   var textDisplay = document.getElementById("dynamic-text");
