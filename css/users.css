@@ -553,6 +553,24 @@ body {
     transform: translateY(-10px); /* Initial position for animation */
 }
 
+.username::after {
+    content: "UID 2";
+    position: absolute;
+    left: 7%;
+    transform: translateX(-50%);
+    bottom: 100%; /* Position it above the username */
+    margin-bottom: 2px; /* Space between username and UID text */
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 5px;
+    border-radius: 5px;
+    font-size: 14px;
+    white-space: nowrap;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+    transform: translateY(-10px); /* Initial position for animation */
+}
+
 .username:hover::after {
     opacity: 0.65;
     transform: translateY(0); /* Move to final position */
