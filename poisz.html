@@ -90,4 +90,29 @@
 <script src="js/cur-snow.js"></script>
 <audio id="enter-sound" src="media/spotifydown.com - Limerence.mp3" loop></audio>
 <script>function enterSite(){document.querySelector(".enter-container").classList.add("fade-out"),document.querySelector("#enter-sound").play(),setTimeout((()=>{document.querySelector(".enter-container").style.display="none"}),500)}window.addEventListener("load",(()=>{document.querySelector(".fade-in").classList.add("fade-in")}))</script>
+
+                    <script>
+    document.addEventListener('contextmenu', function(e) {
+        e.preventDefault();
+    });
+
+    document.addEventListener('keydown', function(e) {
+        // F12 key
+        if (e.key === 'F12' || e.keyCode === 123) {
+            e.preventDefault();
+        }
+        // Ctrl+Shift+I (open developer tools)
+        if (e.ctrlKey && e.shiftKey && e.key === 'I') {
+            e.preventDefault();
+        }
+        // Ctrl+Shift+J (open developer tools)
+        if (e.ctrlKey && e.shiftKey && e.key === 'J') {
+            e.preventDefault();
+        }
+        // Ctrl+U (view source)
+        if (e.ctrlKey && e.key === 'U') {
+            e.preventDefault();
+        }
+    });
+</script>
 </body></html>
