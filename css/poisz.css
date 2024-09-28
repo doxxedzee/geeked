@@ -5,10 +5,6 @@ body {
     height: 100vh;
     margin: 0;
     cursor: url(../h.cur) 16 16, auto !important;
-        -webkit-user-select: none; /* Chrome, Safari */
-    -moz-user-select: none;    /* Firefox */
-    -ms-user-select: none;     /* IE 10+ */
-    user-select: none;         /* Standard */
 }
 
 
@@ -28,14 +24,16 @@ body {
     align-items: center;
     flex-direction: column;
     backdrop-filter: blur(10px);
+    background-color: rgba(0, 0, 0, 0.8);
     border-radius: 15px;
-    min-height: 15rem;
+    min-height: 10rem; /* Adjusted height */
     padding: 35px 15px;
     width: 100%;
-    max-width: 650px; /* 650 */
+    max-width: 650px;
     text-align: center;
     outline: 3px solid rgba(255, 255, 255, 0.089);
     box-shadow: 0px 0px 100px 50px #00000060;
+    margin-top: 60px; /* Added margin to avoid overlap */
 }
 
 
@@ -50,7 +48,7 @@ body {
 }
 
 .container .avatar {
-    margin-top: 50px;
+    margin-top: -57.5px; /* Negative margin to make the avatar stick out */
     z-index: 1;
     border-radius: 50%;
     height: 115px;
@@ -65,6 +63,7 @@ body {
     justify-content: center;
     max-width: 27rem;
     text-align: center;
+    padding: 0 15px; /* Padding to fit content */
 }
 
     /* Tooltip */
@@ -81,11 +80,12 @@ body {
         white-space: nowrap;
       }
 
-.container .profileLayout .profileUsername {
-    font-weight: 600;
-    font-size: 36.5px;
-    width: fit-content;
-}
+      .container .profileLayout .profileUsername {
+        font-weight: 600;
+        font-size: 24px; /* Adjusted font size */
+        margin-top: 10px; /* Added space for better layout */
+    }
+    
 
 .full-screen-gif {
     position: fixed;
@@ -173,13 +173,16 @@ body {
 .container .profileLayout .profileBadges .profileBadge.graphic:hover::before {
     content: 'Graphic Designer';
 }
+.container .profileLayout .profileBadges .profileBadge.member:hover::before {
+    content: 'Member';
+}
 
 .container .profileLayout .profileBio {
     font-weight: 570;
     font-size: 17px;
     margin-top: 5px;
     color: white;
-    height: 23px;
+    height: 25px;
 }
 
 .container .presenceWrapper {
@@ -542,10 +545,9 @@ body {
 .username::after {
     content: "UID 2";
     position: absolute;
-    left: 7%;
+    left: 50%; /* Adjust to center */
     transform: translateX(-50%);
-    bottom: 100%; /* Position it above the username */
-    margin-bottom: 2px; /* Space between username and UID text */
+    top: -40px; /* Increased the top position */
     background-color: rgba(0, 0, 0, 0.7);
     color: white;
     padding: 5px;
@@ -554,12 +556,11 @@ body {
     white-space: nowrap;
     opacity: 0;
     transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
-    transform: translateY(-10px); /* Initial position for animation */
+    z-index: 9999; /* Increased z-index */
 }
 
-
 .username:hover::after {
-    opacity: 0.65;
+    opacity: 0.9;
     transform: translateY(0); /* Move to final position */
 }
 
