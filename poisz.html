@@ -8,7 +8,7 @@
       <meta property="og:image" content="images/fbi.png">
       <title>@poisz</title>
       <link rel="stylesheet" href="public/css/global.css">
-      <link rel="stylesheet" href="css/poisz.css">
+      <link rel="stylesheet" href="css/users.css">
       <link href="https://api.fontshare.com/v2/css?f[]=satoshi@1&amp;f[]=array@400&amp;display=swap" rel="stylesheet">
       <link rel="icon" href="images/fbi.png" type="image/x-icon">
       <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -18,16 +18,16 @@
       </head>
       <body profile="" style="font-family:Satoshi,sans-serif;cursor:url('h.cur'),auto;background-color:#222">
       <div class="enter-container" onclick="enterSite()">
-      <div class="enter-text"> ⎛$CLICK TO ENTER$⎞ </div>
+      <div class="enter-text"> $CLICK TO ENTER$ </div>
       </div> 
-      <img src="media/IMG_1009.gif" alt="GIF Background" class="full-screen-gif">
+      <img src="images/IMG_1009.gif" alt="GIF Background" class="full-screen-gif">
       
       <div class="container">
       <div class="fixed-tips">
       </div>
       <img class="avatar" src="images/511c413510070ba2cdb018b737fc8388.gif">
       <div class="profileLayout">
-      <h1 class="profileUsername" style="color:#fff;text-shadow:0 0 20px #fff;position:relative;"  onmouseover="showUIDTooltip()" onmouseout="hideUIDTooltip()">poisz
+      <h1 class="profileUsername" style="color:#fff;text-shadow:0 0 20px #fff;position:relative;" onmouseover="showUIDTooltip()" onmouseout="hideUIDTooltip()">poisz
         <span id="uid-tooltip" style="display:none;position:absolute;background:rgba(0,0,0,0.7);color:#fff;padding:5px;border-radius:3px;top:-30px;left:0;">UID: 2</span>
       </h1>
       <div class="profileBadges">
@@ -51,13 +51,63 @@
               <path fill="white" d="m23 12l-2.44-2.79l.34-3.69l-3.61-.82l-1.89-3.2L12 2.96L8.6 1.5L6.71 4.69L3.1 5.5l.34 3.7L1 12l2.44 2.79l-.34 3.7l3.61.82L8.6 22.5l3.4-1.47l3.4 1.46l1.89-3.19l3.61-.82l-.34-3.69zM9.38 16.01L7 13.61a.996.996 0 0 1 0-1.41l.07-.07c.39-.39 1.03-.39 1.42 0l1.61 1.62l5.15-5.16c.39-.39 1.03-.39 1.42 0l.07.07c.39.39.39 1.02 0 1.41l-5.92 5.94c-.41.39-1.04.39-1.44 0"></path>
           </svg>
           </div>
+          <div style="display:flex" class="profileBadge member">
+            <svg class="profileBadge" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" width="1.3em" height="1.3em" viewBox="0 0 24 24">
+                <path fill="currentColor" d="M12 12q-1.65 0-2.825-1.175T8 8t1.175-2.825T12 4t2.825 1.175T16 8t-1.175 2.825T12 12m-8 8v-2.8q0-.85.438-1.562T5.6 14.55q1.55-.775 3.15-1.162T12 13t3.25.388t3.15 1.162q.725.375 1.163 1.088T20 17.2V20z"></path>
+            </svg>
+            </div>
 </div>
 <h2 id="typingText" style="color:#fff" class="profileBio"></h2>
 <i>
-<div id="typingTexts" style="display:none">get money, scam scammers</div>
+  <div id="typingTexts" style="display:none">
+    Swats.lol Founder
+    <br>
+    UID 2
+    <br>
+    Developer
+    <br>
+    #1 Private Network Organization
+  </div>
 </i>
-<script src="js/typing.js"></script>
-</div>
+
+<script>
+  const typingTextElement = document.getElementById('typingText');
+  const textsArray = document.getElementById('typingTexts').innerHTML.trim().split('<br>'); // Fetch texts and split them
+  let textIndex = 0;
+  let charIndex = 0;
+  let typingSpeed = 100; // Adjust typing speed (in milliseconds)
+  let erasingSpeed = 50; // Adjust erasing speed (in milliseconds)
+  let delayBetweenTexts = 1500; // Time delay between typing each text (in milliseconds)
+
+  function typeText() {
+    if (charIndex < textsArray[textIndex].length) {
+      typingTextElement.innerHTML += textsArray[textIndex].charAt(charIndex);
+      charIndex++;
+      setTimeout(typeText, typingSpeed);
+    } else {
+      setTimeout(eraseText, delayBetweenTexts);
+    }
+  }
+
+  function eraseText() {
+    if (charIndex > 0) {
+      typingTextElement.innerHTML = textsArray[textIndex].substring(0, charIndex - 1);
+      charIndex--;
+      setTimeout(eraseText, erasingSpeed);
+    } else {
+      textIndex = (textIndex + 1) % textsArray.length; // Move to the next text in array
+      setTimeout(typeText, typingSpeed);
+    }
+  }
+
+  document.addEventListener("DOMContentLoaded", () => {
+    if (textsArray.length) typeText();
+  });
+</script>
+
+
+
+
 <div class="presenceWrapper">
 <div class="presenceContainer">
 <div class="discordInfos">
@@ -69,15 +119,15 @@
 <div class="discordUserDiv">
 <span>poisz (@x841)</span>
 <div class="discordUserBadges">
-<div class="discordUserBadge" data-tooltip="Subscriber since Apr 25, 2024">
+<div class="discordUserBadge" data-tooltip="Subscriber since Sep 10, 2024">
 <img src="images/booster.png" alt="Discord Badge">
 </div>
-<div class="discordUserBadge" data-tooltip="Server boosting since Jun 13, 2021">
+<div class="discordUserBadge" data-tooltip="Server boosting since Sep 12, 2024">
 <img src="images/boost.png" alt="Discord Badge">
 </div>
 </div>
 </div>
-<h3>developer owner of swats.lol</h3>
+<h3>owner of swats.lol</h3>
 </div>
 <div class="discordActivityImage"></div>
 </div>
@@ -86,32 +136,78 @@
 </div>
 </div>
 <div style="display:none" id="curEffClr">#ffffff</div>
-<script src="js/cur-snow.js"></script>
 <audio id="enter-sound" src="media/spotifydown.com - Limerence.mp3" loop></audio>
 <script>function enterSite(){document.querySelector(".enter-container").classList.add("fade-out"),document.querySelector("#enter-sound").play(),setTimeout((()=>{document.querySelector(".enter-container").style.display="none"}),500)}window.addEventListener("load",(()=>{document.querySelector(".fade-in").classList.add("fade-in")}))</script>
 
-                    <script>
-    document.addEventListener('contextmenu', function(e) {
-        e.preventDefault();
-    });
+<html lang="en"></html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cursor Trail Image Effect</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            overflow: hidden;
+            background-color: #f0f0f0;
+        }
+        .trail {
+            position: absolute;
+            width: 20px; /* Adjust size as needed */
+            height: 20px; /* Adjust size as needed */
+            pointer-events: none;
+            opacity: 1;
+            transform: translate(-50%, -50%);
+            animation: fall 8s forwards; /* Slower fall */
+        }
+        @keyframes fall {
+            0% { 
+                transform: translate(var(--startX), var(--startY)); 
+                opacity: 1;
+            }
+            100% { 
+                transform: translate(var(--endX), calc(100vh + 10px)); 
+                opacity: 0; /* Fade out gradually */
+            }
+        }
+    </style>
+</head>
+<body>
 
-    document.addEventListener('keydown', function(e) {
-        // F12 key
-        if (e.key === 'F12' || e.keyCode === 123) {
-            e.preventDefault();
-        }
-        // Ctrl+Shift+I (open developer tools)
-        if (e.ctrlKey && e.shiftKey && e.key === 'I') {
-            e.preventDefault();
-        }
-        // Ctrl+Shift+J (open developer tools)
-        if (e.ctrlKey && e.shiftKey && e.key === 'J') {
-            e.preventDefault();
-        }
-        // Ctrl+U (view source)
-        if (e.ctrlKey && e.key === 'U') {
-            e.preventDefault();
+<script>
+    let lastTime = 0;
+
+    document.addEventListener('mousemove', (event) => {
+        const currentTime = Date.now();
+        if (currentTime - lastTime > 30) { // Spawn every 0.03 seconds
+            lastTime = currentTime;
+
+            // Create an img element for the trail
+            const img = document.createElement('img');
+            img.src = 'images/download (1).png'; // Replace with the path to your image
+            img.classList.add('trail');
+            img.style.left = `${event.clientX}px`;
+            img.style.top = `${event.clientY}px`;
+
+            // Random horizontal movement for spreading effect
+            const spreadAmount = 500; // How much the image can spread out (adjust as needed)
+            const randomX = (Math.random() - 0.25) * spreadAmount; // Random value between -spreadAmount/2 and +spreadAmount/2
+
+            img.style.setProperty('--startX', '-50%'); // Start at cursor position
+            img.style.setProperty('--startY', '-50%');
+            img.style.setProperty('--endX', `${randomX}px`); // End point with horizontal spread
+
+            document.body.appendChild(img);
+            
+            // Remove the image after the animation ends
+            img.addEventListener('animationend', () => {
+                img.remove();
+            });
         }
     });
 </script>
+
+</body>
+</html>
 </body></html>
+
