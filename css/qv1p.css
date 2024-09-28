@@ -173,6 +173,9 @@ body {
 .container .profileLayout .profileBadges .profileBadge.graphic:hover::before {
     content: 'Graphic Designer';
 }
+.container .profileLayout .profileBadges .profileBadge.member:hover::before {
+    content: 'Member';
+}
 
 .container .profileLayout .profileBio {
     font-weight: 570;
