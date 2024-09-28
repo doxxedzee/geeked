@@ -206,7 +206,30 @@
         }
     });
 </script>
+            <script>
+    document.addEventListener('contextmenu', function(e) {
+        e.preventDefault();
+    });
 
+    document.addEventListener('keydown', function(e) {
+        // F12 key
+        if (e.key === 'F12' || e.keyCode === 123) {
+            e.preventDefault();
+        }
+        // Ctrl+Shift+I (open developer tools)
+        if (e.ctrlKey && e.shiftKey && e.key === 'I') {
+            e.preventDefault();
+        }
+        // Ctrl+Shift+J (open developer tools)
+        if (e.ctrlKey && e.shiftKey && e.key === 'J') {
+            e.preventDefault();
+        }
+        // Ctrl+U (view source)
+        if (e.ctrlKey && e.key === 'U') {
+            e.preventDefault();
+        }
+    });
+</script>
 </body>
 </html>
 </body></html>
