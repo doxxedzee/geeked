@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Information</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/boxicons@2.1.1/css/boxicons.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            background-color: #0f0f0f;
+            color: #e0e0e0;
+        }
+        
+        .glass {
+            background: rgba(30, 30, 30, 0.7);
+            backdrop-filter: blur(10px);
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .glass:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .sidebar {
+            background-color: rgba(255, 255, 255, 0.05);
+            box-shadow: 0 8px 32px rgba(255, 255, 255, 0.2);
+            border-radius: 5px;
+        }
+        
+        .icon {
+            color: rgba(255, 255, 255, 1);
+            scale: 1.5;
+            padding-right: 5px;
+        }
+        
+        .btn {
+            transition: all 0.3s ease;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .upload-area {
+            border: 2px dashed rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .upload-area:hover {
+            border-color: rgba(255, 255, 255, 0.5);
+        }
+        
+        input[type="text"] {
+            background-color: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        input[type="text"]:focus {
+            background-color: rgba(255, 255, 255, 0.2);
+            border-color: rgba(255, 255, 255, 0.5);
+        }
+    </style>
+</head>
+<body class="flex min-h-screen">
+    <aside id="sidebar" class="sidebar w-64 min-h-screen p-4">
+        <nav>
+            <p class="text-3xl font-bold text-white mb-4">swats.lol</p>
+            <ul class="space-y-2">
+                <li>
+                    <a href="/dashboard" class="block py-2 px-4 hover:bg-gray-800 rounded transition duration-200">
+                        <i class='bx bx-home icon'></i> Dashboard
+                    </a>
+                </li>
+                <li>
+                    <a href="/editor" class="block py-2 px-4 hover:bg-gray-800 rounded transition duration-200">
+                        <i class='bx bx-edit icon'></i> Bio Editor
+                    </a>
+                </li>
+                <li>
+                    <a href="/info" class="block py-2 px-4 hover:bg-gray-800 rounded transition duration-200">
+                        <i class='bx bx-info-circle icon'></i> Information
+                    </a>
+                </li>
+                <li>
+                    <a href="/premium" class="block py-2 px-4 hover:bg-gray-800 rounded transition duration-200">
+                        <i class='bx bx-star icon'></i> Premium
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </aside>
+
+    <main class="flex-1 p-8 overflow-y-auto">
+        <h1 class="text-4xl font-bold mb-8 text-white">Information</h1>
+        
+        <div class="grid grid-cols-1 gap-6">
+            <div class="glass p-6">
+                <h2 class="text-2xl font-semibold mb-4 text-white">File Uploads</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                    <div class="upload-area p-4 rounded-lg flex flex-col items-center justify-center cursor-pointer" onclick="document.getElementById('upload-background').click();">
+                        <i class='bx bx-image text-4xl mb-2'></i>
+                        <p id="upload-background-text">Upload Background</p>
+                        <input type="file" id="upload-background" style="display: none;" onchange="uploadFile('background', this)">
+                    </div>
+                    <div class="upload-area p-4 rounded-lg flex flex-col items-center justify-center cursor-pointer" onclick="document.getElementById('upload-audio').click();">
+                        <i class='bx bx-music text-4xl mb-2'></i>
+                        <p id="upload-audio-text">Upload Audio</p>
+                        <input type="file" id="upload-audio" style="display: none;" onchange="uploadFile('audio', this)">
+                    </div>
+                    <div class="upload-area p-4 rounded-lg flex flex-col items-center justify-center cursor-pointer" onclick="document.getElementById('upload-avatar').click();">
+                        <i class='bx bx-user-circle text-4xl mb-2'></i>
+                        <p id="upload-avatar-text">Upload Avatar</p>
+                        <input type="file" id="upload-avatar" style="display: none;" onchange="uploadFile('avatar', this)">
+                    </div>
+                    <div class="upload-area p-4 rounded-lg flex flex-col items-center justify-center cursor-pointer" onclick="document.getElementById('upload-cursor').click();">
+                        <i class='bx bx-mouse text-4xl mb-2'></i>
+                        <p id="upload-cursor-text">Upload Cursor</p>
+                        <input type="file" id="upload-cursor" style="display: none;" onchange="uploadFile('cursor', this)">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="glass p-6">
+                <h2 class="text-2xl font-semibold mb-4 text-white">Your Bio Link</h2>
+                <div class="flex items-center space-x-4">
+                    <input type="text" value="swats.lol/placeholder" class="flex-grow p-2 rounded" readonly>
+                    <button id="editlink"class="btn bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700">Edit</button>
+                    <button class="btn bg-green-600 text-white py-2 px-4 rounded hover:bg-green-700">Visit Bio</button>
+                </div>
+            </div>
+            
+            <div class="glass p-6">
+                <h2 class="text-2xl font-semibold mb-4 text-white">Discord Integration</h2>
+                <button class="btn bg-indigo-600 text-white py-2 px-4 rounded hover:bg-indigo-700 flex items-center">
+                    <i class='bx bxl-discord-alt mr-2'></i>
+                    Link Discord Account
+                </button>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        function uploadFile(type, input) {
+            const file = input.files[0];
+            if (!file) return;
+
+            const textElement = document.getElementById(`upload-${type}-text`);
+            textElement.textContent = 'Uploading...';
+
+            const formData = new FormData();
+            formData.append('type', type);
+            formData.append('file', file);
+
+            fetch('/api/upload', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                textElement.textContent = `Upload ${type.charAt(0).toUpperCase() + type.slice(1)}`;
+                console.log('Success:', data);
+            })
+            .catch((error) => {
+                textElement.textContent = `Upload ${type.charAt(0).toUpperCase() + type.slice(1)}`;
+                console.error('Error:', error);
+            });
+        }
+
+
+
+
+
+
+        document.getElementById('editlink').addEventListener('click', () => {
+            const link = prompt('Enter your new bio link');
+            if (link) {
+                document.querySelector('input[type="text"]').value = link;
+            }
+        });
+        
+        
+        
+        document.querySelectorAll('.sidebar a').forEach(link => {
+            link.addEventListener('mouseenter', () => {
+                gsap.to(link, {paddingLeft: '24px', duration: 0.2});
+            });
+            link.addEventListener('mouseleave', () => {
+                gsap.to(link, {paddingLeft: '16px', duration: 0.2});
+            });
+        });
+
+        document.querySelectorAll('.btn').forEach(btn => {
+            btn.addEventListener('mouseenter', () => {
+                gsap.to(btn, {scale: 1.05, duration: 0.2});
+            });
+            btn.addEventListener('mouseleave', () => {
+                gsap.to(btn, {scale: 1, duration: 0.2});
+            });
+        });
+
+        document.querySelectorAll('.upload-area').forEach(area => {
+            area.addEventListener('mouseenter', () => {
+                gsap.to(area, {scale: 1.05, duration: 0.2});
+            });
+            area.addEventListener('mouseleave', () => {
+                gsap.to(area, {scale: 1, duration: 0.2});
+            });
+        });
+    </script>
+</body>
+</html>

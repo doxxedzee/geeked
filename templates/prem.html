@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premium Features</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/boxicons@2.1.1/css/boxicons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.cdnfonts.com/css/minecraftia" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Chakra+Petch&display=swap');
+        
+        
+        .glass {
+            background: rgba(30, 30, 30, 0.7);
+            backdrop-filter: blur(10px);
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: white;
+            cursor: pointer;
+        }
+        .slider::-moz-range-thumb {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: white;
+            cursor: pointer;
+        }
+        .sidebar {
+            transition: transform 0.3s ease-in-out;
+        }
+        .toggle-switch {
+            position: relative;
+            display: inline-block;
+            width: 40px;
+            height: 20px;
+        }
+        .toggle-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        .slider-switch {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: .4s;
+            border-radius: 20px;
+        }
+        .slider-switch:before {
+            position: absolute;
+            content: "";
+            height: 16px;
+            width: 16px;
+            left: 2px;
+            bottom: 2px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+        input:checked + .slider-switch {
+            background-color: #2196F3;
+        }
+        input:checked + .slider-switch:before {
+            transform: translateX(20px);
+        }
+        .icon {
+            color: rgba(255, 255, 255, 1);
+            scale: 1.5;
+            padding-right: 5px;
+        }
+        .sidebar {
+            background-color: rgba(255, 255, 255, 0.1);
+            box-shadow: 0 8px 32px rgba(255, 255, 255, 0.2);
+            border-radius: 5px;
+        }
+        @font-face {
+            font-family: 'Minecraftia';
+            src: url('path-to-minecraftia-font.woff2') format('woff2');
+        }
+        .font-minecraftia {
+            font-family: 'Minecraftia', cursive;
+        }
+        .font-cursive {
+            font-family: 'Brush Script MT', cursive;
+        }
+        .font-normal-bold {
+            font-family: 'Arial', sans-serif;
+            font-weight: bold;
+        }
+
+        .custom-dropdown {
+            background-color: #333; 
+            color: #fff;
+            padding: 10px; 
+            border: none; 
+            border-radius: 5px; 
+            font-size: 16px; 
+            width: 75%; 
+        }
+
+        .custom-dropdown option {
+            background-color: #333; 
+            color: #fff; 
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #0f0f0f;
+            color: #e0e0e0;
+        }
+
+    </style>
+</head>
+<body class="bg-black text-gray-300 min-h-screen flex">
+    <aside id="sidebar" class="sidebar w-64 min-h-screen p-4">
+        <nav>
+            <p class="text-3xl font-bold text-white mb-4">swats.lol</p>
+            <ul class="space-y-2">
+                <li>
+                    <a href="/dashboard" class="block py-2 px-4 hover:bg-gray-800 rounded transition duration-200">
+                        <i class='bx bx-home icon'></i> Dashboard
+                    </a>
+                </li>
+                <li>
+                    <a href="/editor" class="block py-2 px-4 hover:bg-gray-800 rounded transition duration-200">
+                        <i class='bx bx-edit icon'></i> Bio Editor
+                    </a>
+                </li>
+                <li>
+                    <a href="/info" class="block py-2 px-4 hover:bg-gray-800 rounded transition duration-200">
+                        <i class='bx bx-info-circle icon'></i> Information
+                    </a>
+                </li>
+                <li>
+                    <a href="/premium" class="block py-2 px-4 hover:bg-gray-800 rounded transition duration-200">
+                        <i class='bx bx-star icon'></i> Premium
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </aside>
+
+    <main class="flex-1 p-8">
+        <h1 class="text-3xl font-bold mb-8 text-white">Premium Features</h1>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="glass p-6">
+                <h2 class="text-xl font-semibold mb-4 text-white">Background Details</h2>
+                <div class="space-y-4">
+                    <div class="flex items-center justify-between">
+                        <label for="background-details">Background Details</label>
+                        <select id="background-details" class="dropdown custom-dropdown">
+                            <option value="snow">Snow</option>
+                            <option value="placeholder1">Placeholder 1</option>
+                            <option value="placeholder2">Placeholder 2</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="glass p-6">
+                <h2 class="text-xl font-semibold mb-4 text-white">Username Effects</h2>
+                <div class="space-y-4">
+                    <div class="flex items-center justify-between">
+                        <label for="username-effects">Username Effects</label>
+                        <select id="username-effects" class="dropdown custom-dropdown">
+                            <option value="sparkles">Sparkles</option>
+                            <option value="rainbow">Rainbow</option>
+                            <option value="placeholder3">Placeholder</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="glass p-6">
+                <h2 class="text-xl font-semibold mb-4 text-white">Typewriter Effects</h2>
+                <div class="space-y-4">
+                    <div class="flex items-center justify-between">
+                        <label for="usernameTypewriter">Username Typewriter</label>
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="usernameTypewriter">
+                            <span class="slider-switch"></span>
+                        </label>
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <label for="descriptionTypewriter">Description Typewriter</label>
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="descriptionTypewriter">
+                            <span class="slider-switch"></span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="glass p-6">
+                <h2 class="text-xl font-semibold mb-4 text-white">Fonts</h2>
+                <div class="space-y-4">
+                    <div class="flex items-center justify-between">
+                        <label for="fontMinecraftia" class="font-minecraftia">Minecraftia</label>
+                        <input type="radio" id="fontMinecraftia" name="font" value="minecraftia">
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <label for="fontCursive" class="font-cursive">Cursive</label>
+                        <input type="radio" id="fontCursive" name="font" value="cursive">
+                    </div>
+                    <div class="flex items-center justify-between">
+                        <label for="fontNormalBold" class="font-normal-bold">Normal Bold</label>
+                        <input type="radio" id="fontNormalBold" name="font" value="normal-bold">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="glass p-6 md:col-span-2">
+                <h2 class="text-xl font-semibold mb-4 text-white">Typewriter Speed</h2>
+                <div class="space-y-6">
+                    <div>
+                        <label for="usernameTypewriterSpeed" class="block mb-2">Username Typewriter Speed (<span id="usernameSpeedValue">50</span>%)</label>
+                        <input type="range" id="usernameTypewriterSpeed" min="0" max="100" value="50" class="slider w-full bg-gray-700 rounded-lg appearance-none cursor-pointer">
+                    </div>
+                    <div>
+                        <label for="descriptionTypewriterSpeed" class="block mb-2">Description Typewriter Speed (<span id="descriptionSpeedValue">50</span>%)</label>
+                        <input type="range" id="descriptionTypewriterSpeed" min="0" max="100" value="50" class="slider w-full bg-gray-700 rounded-lg appearance-none cursor-pointer">
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <button id="saveChanges" class="mt-8 bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700 transition duration-200">Save Changes</button>
+    </main>
+
+    <script>
+        const sidebar = document.getElementById('sidebar');
+        const saveChanges = document.getElementById('saveChanges');
+
+        saveChanges.addEventListener('click', () => {
+            gsap.to(saveChanges, {scale: 1.1, duration: 0.2, yoyo: true, repeat: 1});
+        });
+
+        document.querySelectorAll('.sidebar a').forEach(link => {
+            link.addEventListener('mouseenter', () => {
+                gsap.to(link, {paddingLeft: '24px', duration: 0.2});
+            });
+            link.addEventListener('mouseleave', () => {
+                gsap.to(link, {paddingLeft: '16px', duration: 0.2});
+            });
+        });
+
+        gsap.from('.glass', {opacity: 0, y: 20, duration: 0.5, stagger: 0.2});
+
+        const usernameTypewriterSpeed = document.getElementById('usernameTypewriterSpeed');
+        const descriptionTypewriterSpeed = document.getElementById('descriptionTypewriterSpeed');
+        const usernameSpeedValue = document.getElementById('usernameSpeedValue');
+        const descriptionSpeedValue = document.getElementById('descriptionSpeedValue');
+
+        usernameTypewriterSpeed.addEventListener('input', () => {
+            usernameSpeedValue.textContent = usernameTypewriterSpeed.value;
+        });
+
+        descriptionTypewriterSpeed.addEventListener('input', () => {
+            descriptionSpeedValue.textContent = descriptionTypewriterSpeed.value;
+        });
+    </script>
+</body>
+</html>
