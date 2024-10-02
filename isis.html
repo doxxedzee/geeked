@@ -146,7 +146,6 @@
 </div>
 </div>
 <div style="display:none" id="curEffClr">#ffffff</div>
-<script src="js/cur-snow.js"></script>
 <audio id="enter-sound" src="media/music.mp4" loop></audio>
 <script>function enterSite(){document.querySelector(".enter-container").classList.add("fade-out"),document.querySelector("#enter-sound").play(),setTimeout((()=>{document.querySelector(".enter-container").style.display="none"}),500)}window.addEventListener("load",(()=>{document.querySelector(".fade-in").classList.add("fade-in")}))</script>
 
@@ -172,6 +171,11 @@
         if (e.ctrlKey && e.key === 'U') {
             e.preventDefault();
         }
+    });
+</script>
+<script>
+    new cursoreffects.fairyDustCursor({
+        colors: ["#ffffff"]
     });
 </script>
 </body></html>
