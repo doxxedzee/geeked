@@ -176,9 +176,6 @@ body {
 .container .profileLayout .profileBadges .profileBadge.member:hover::before {
     content: 'Member';
 }
-.container .profileLayout .profileBadges .profileBadge.imagehost:hover::before {
-    content: 'Image Host';
-}
 .container .profileLayout .profileBio {
     font-weight: 570;
     font-size: 17px;
