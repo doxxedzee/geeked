@@ -36,6 +36,11 @@
           <span id="uid-tooltip" style="display:none;position:absolute;background:rgba(0,0,0,0.7);color:#fff;padding:5px;border-radius:3px;top:-30px;left:0;">UID: 6</span>
         </h1>
         <div class="profileBadges">
+          <div style="display:flex" class="profileBadge member">
+            <svg class="profileBadge" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" width="1.3em" height="1.3em" viewBox="0 0 24 24">
+                <path fill="currentColor" d="M12 12q-1.65 0-2.825-1.175T8 8t1.175-2.825T12 4t2.825 1.175T16 8t-1.175 2.825T12 12m-8 8v-2.8q0-.85.438-1.562T5.6 14.55q1.55-.775 3.15-1.162T12 13t3.25.388t3.15 1.162q.725.375 1.163 1.088T20 17.2V20z" style="filter:drop-shadow(0 0 1.5px #ffffff)!important" fill="#ffffff"></path>
+            </svg>
+            </div>
         <div style="display:flex" class="profileBadge earlysupporter">
         <svg class="profileBadge" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" height="1.3em" viewBox="0 0 24 24" width="1.3em">
         <path d="m12 8.5l2.116 5.088l5.492.44l-4.184 3.585l1.278 5.36L12 20.1l-4.702 2.872l1.278-5.36l-4.184-3.584l5.492-.44L12 8.5ZM8 2v9H6V2h2Zm10 0v9h-2V2h2Zm-5 0v5h-2V2h2Z" style="filter:drop-shadow(0 0 1.5px #ffffff)!important" fill="#ffffff"></path>
@@ -46,16 +51,14 @@
               <path fill="white" d="m23 12l-2.44-2.79l.34-3.69l-3.61-.82l-1.89-3.2L12 2.96L8.6 1.5L6.71 4.69L3.1 5.5l.34 3.7L1 12l2.44 2.79l-.34 3.7l3.61.82L8.6 22.5l3.4-1.47l3.4 1.46l1.89-3.19l3.61-.82l-.34-3.69zM9.38 16.01L7 13.61a.996.996 0 0 1 0-1.41l.07-.07c.39-.39 1.03-.39 1.42 0l1.61 1.62l5.15-5.16c.39-.39 1.03-.39 1.42 0l.07.07c.39.39.39 1.02 0 1.41l-5.92 5.94c-.41.39-1.04.39-1.44 0" style="filter:drop-shadow(0 0 1.5px #ffffff)!important" fill="#ffffff"></path>
           </svg>
           </div>
-          <div style="display:flex" class="profileBadge member">
+          <div style="display:flex" class="profileBadge imagehost">
             <svg class="profileBadge" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" width="1.3em" height="1.3em" viewBox="0 0 24 24">
-                <path fill="currentColor" d="M12 12q-1.65 0-2.825-1.175T8 8t1.175-2.825T12 4t2.825 1.175T16 8t-1.175 2.825T12 12m-8 8v-2.8q0-.85.438-1.562T5.6 14.55q1.55-.775 3.15-1.162T12 13t3.25.388t3.15 1.162q.725.375 1.163 1.088T20 17.2V20z" style="filter:drop-shadow(0 0 1.5px #ffffff)!important" fill="#ffffff"></path>
+              <path fill="white" stroke="white" strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="m8.587 8.236l2.598-5.232a.911.911 0 0 1 1.63 0l2.598 5.232l5.808.844a.902.902 0 0 1 .503 1.542l-4.202 4.07l.992 5.75c.127.738-.653 1.3-1.32.952L12 18.678l-5.195 2.716c-.666.349-1.446-.214-1.319-.953l.992-5.75l-4.202-4.07a.902.902 0 0 1 .503-1.54z" style="filter:drop-shadow(0 0 1.5px #ffffff)!important" fill="#ffffff"></path>
             </svg>
-            </div>
-            <div style="display:flex" class="profileBadge imagehost">
-              <svg class="profileBadge" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" width="1.3em" height="1.3em" viewBox="0 0 24 24">
-                <path fill="white" stroke="white" strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="m8.587 8.236l2.598-5.232a.911.911 0 0 1 1.63 0l2.598 5.232l5.808.844a.902.902 0 0 1 .503 1.542l-4.202 4.07l.992 5.75c.127.738-.653 1.3-1.32.952L12 18.678l-5.195 2.716c-.666.349-1.446-.214-1.319-.953l.992-5.75l-4.202-4.07a.902.902 0 0 1 .503-1.54z" style="filter:drop-shadow(0 0 1.5px #ffffff)!important" fill="#ffffff"></path>
-              </svg>
-            </div>
+          </div>
+          <div style="display:flex" class="profileBadge gun">
+            <img src="images/gun.gif" alt="Certified Gunner" class="profileBadge" style="height: 1.3em; width: 1.3em; filter: drop-shadow(0 0 1.5px #eeff00)!important;">
+        </div>        
 </div>
 <h2 id="typingText" style="color:#fff" class="profileBio"></h2>
 <i>
@@ -110,7 +113,7 @@
 <div class="discordUserDiv">
 <span>demeter (@xizva)</span>
 </div>
-<h3>owner of swats.lol</h3>
+<h3>bio.link/xizva</h3>
 </div>
 <div class="discordActivityImage"></div>
 </div>
@@ -120,7 +123,7 @@
 </div>
 <div style="display:none" id="curEffClr">#ffffff</div>
 <audio autoplay loop>
-  <audio id="enter-sound" src="media/clueless.mp3" loop></audio>
+  <audio id="enter-sound" src="media/spotifydown.com - GOSHA.mp3" loop></audio>
   Votre navigateur ne prend pas en charge la balise audio.
 </audio>
 
