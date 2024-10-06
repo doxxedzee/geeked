@@ -67,21 +67,19 @@ body {
     text-align: center;
 }
 
-/* Tooltip */
-.profileUsername:hover::after {
-    content: 'UID: 1';
-    position: absolute;
-    top: -25px; /* Adjust this value to position the tooltip above */
-    left: 50%; /* Aligns the tooltip's left side to the center of the element */
-    transform: translateX(-50%); /* Moves the tooltip back by 50% of its own width to center it */
-    background-color: rgba(0, 0, 0, 0.7);
-    color: #fff;
-    padding: 5px 10px;
-    border-radius: 5px;
-    font-size: 14px;
-    white-space: nowrap;
-    z-index: 10; /* Ensure it's above other elements */
-}
+    /* Tooltip */
+    .profileUsername:hover::after {
+        content: 'UID: 1';
+        position: absolute;
+        top: -25px;
+        left: 0;
+        background-color: rgba(0, 0, 0, 0.7);
+        color: #fff;
+        padding: 5px 10px;
+        border-radius: 5px;
+        font-size: 14px;
+        white-space: nowrap;
+      }
 
 .container .profileLayout .profileUsername {
     font-weight: 600;
@@ -121,6 +119,17 @@ body {
     color: #ffffff !important;
 }
 
+.full-screen-video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1; /* Ensure video is behind everything */
+    pointer-events: none; /* Make sure the video doesn't interfere with clicks */
+}
+
 .container .profileLayout .profileBadges .profileBadge::before {
     content: '';
     background-color: black;
@@ -157,9 +166,6 @@ body {
 .container .profileLayout .profileBadges .profileBadge.crown:hover::before {
     content: 'Founder';
 }
-.container .profileLayout .profileBadges .profileBadge.premium:hover::before {
-    content: 'Premium';
-}
 .container .profileLayout .profileBadges .profileBadge.bughunter:hover::before {
     content: 'Bug Hunter';
 }
@@ -180,6 +186,9 @@ body {
 }
 .container .profileLayout .profileBadges .profileBadge.imagehost:hover::before {
     content: 'Image Host';
+}
+.container .profileLayout .profileBadges .profileBadge.premium:hover::before {
+    content: 'Premium';
 }
 .container .profileLayout .profileBio {
     font-weight: 570;
