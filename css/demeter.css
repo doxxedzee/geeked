@@ -191,6 +191,9 @@ body {
 .container .profileLayout .profileBadges .profileBadge.gun:hover::before {
     content: 'Certified Gunner';
 }
+.container .profileLayout .profileBadges .profileBadge.money:hover::before {
+    content: '$ money $';
+}
 .container .profileLayout .profileBio {
     font-weight: 570;
     font-size: 17px;
