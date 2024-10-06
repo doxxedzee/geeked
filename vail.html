@@ -1,0 +1,183 @@
+<!DOCTYPE html><html><head></head>
+    <!DOCTYPE html><html><head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <meta content="#000000" name="theme-color">
+        <meta content="@vail" property="og:title">
+        <meta property="og:description" content="#1 Private Network Organization">
+        <meta property="og:image" content="images/fbi.png">
+        <title>@vail</title>
+        <link rel="stylesheet" href="public/css/global.css">
+        <link rel="stylesheet" href="css/vail.css">
+        <link href="https://api.fontshare.com/v2/css?f[]=satoshi@1&amp;f[]=array@400&amp;display=swap" rel="stylesheet">
+        <link rel="icon" href="images/fbi.png" type="image/x-icon">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+        <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=Bungee&amp;family=Creepster&amp;family=Gloria+Hallelujah&amp;family=Permanent+Marker&amp;display=swap" rel="stylesheet">
+
+        <style>.enter-container{position:fixed;top:0;left:0;width:100%;height:100%;display:flex;justify-content:center;align-items:center;background:rgba(0,0,0,.9);z-index:10;cursor:pointer;color:#fff;text-align:center;font-family:'Bebas Neue',sans-serif;font-size:25px;font-weight:700;text-shadow:0 0 15px rgba(255,255,255,.8);transition:opacity .5s ease-in-out,visibility .5s}.snowflake{position:fixed;top:0;font-size:24px;user-select:none;pointer-events:none;color:#fff}.fixed-tips{position:absolute;top:10px;right:10px;display:flex;flex-direction:column;gap:5px;font-family:Satoshi,sans-serif;font-size:14px;color:#fff}.fixed-tips .tooltip{background-color:rgba(0,0,0,.7);padding:5px 10px;border-radius:5px}.enter-container.fade-out{opacity:0;visibility:hidden}.fade-in{opacity:0;animation:fadeInEffect 1s forwards}.cursor-custom{cursor:url(h.cur) 16 16,auto!important}@keyframes fadeInEffect{to{opacity:1}}</style>
+        </head>
+        <body profile="" style="font-family:Satoshi,sans-serif;cursor:url('h.cur'),auto;background-color:#222">
+        <div class="enter-container" onclick="enterSite()">
+        <div class="enter-text"> [ welcome to hell ] </div>
+        </div> 
+        
+        <video class=background loop preload=auto>
+          <source src="media/c8304c0b-cb38-4316-af3a-4322c4bac1ea.mp4".mp4 type=video/mp4>Votre navigateur ne prend pas en charge la balise vidéo.
+  
+      </video>
+        <div class="container">
+        <div class="fixed-tips">
+        </div>
+        <img class="avatar" src="images/mask.png">
+        <div class="profileLayout">
+          <h1 class="profileUsername" style="color:#fff;text-shadow:0 0 20px #fff;position:relative;background-image:url('images/sparkle.gif');background-size:200%;background-repeat:no-repeat;" onmouseover="showUIDTooltip()" onmouseout="hideUIDTooltip()">vail</h1>
+          <span id="uid-tooltip" style="display:none;position:absolute;background:rgba(0,0,0,0.7);color:#fff;padding:5px;border-radius:3px;top:-30px;left:0;">UID: 3</span>
+        </h1>
+        <div class="profileBadges">
+        <div style="display:flex" class="profileBadge earlysupporter">
+        <svg class="profileBadge" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" height="1.3em" viewBox="0 0 24 24" width="1.3em">
+        <path d="m12 8.5l2.116 5.088l5.492.44l-4.184 3.585l1.278 5.36L12 20.1l-4.702 2.872l1.278-5.36l-4.184-3.584l5.492-.44L12 8.5ZM8 2v9H6V2h2Zm10 0v9h-2V2h2Zm-5 0v5h-2V2h2Z" style="filter:drop-shadow(0 0 1.5px #ffffff)!important" fill="#ffffff"></path>
+        </svg>
+        </div>
+          <div style="display:flex" class="profileBadge member">
+            <svg class="profileBadge" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" width="1.3em" height="1.3em" viewBox="0 0 24 24">
+                <path fill="currentColor" d="M12 12q-1.65 0-2.825-1.175T8 8t1.175-2.825T12 4t2.825 1.175T16 8t-1.175 2.825T12 12m-8 8v-2.8q0-.85.438-1.562T5.6 14.55q1.55-.775 3.15-1.162T12 13t3.25.388t3.15 1.162q.725.375 1.163 1.088T20 17.2V20z" style="filter:drop-shadow(0 0 1.5px #ffffff)!important" fill="#ffffff"></path>
+            </svg>
+            </div>
+</div>
+<h2 id="typingText" style="color:#fff" class="profileBio"></h2>
+<i>
+  <div id="typingTexts" style="display:none">
+    15/12/2023 🕊️
+    <br>
+    God first
+    <br>
+  </div>
+</i>
+
+<script>
+  const typingTextElement = document.getElementById('typingText');
+  const textsArray = document.getElementById('typingTexts').innerHTML.trim().split('<br>'); // Fetch texts and split them
+  let textIndex = 0;
+  let charIndex = 0;
+  let typingSpeed = 100; // Adjust typing speed (in milliseconds)
+  let erasingSpeed = 50; // Adjust erasing speed (in milliseconds)
+  let delayBetweenTexts = 1500; // Time delay between typing each text (in milliseconds)
+
+  function typeText() {
+    if (charIndex < textsArray[textIndex].length) {
+      typingTextElement.innerHTML += textsArray[textIndex].charAt(charIndex);
+      charIndex++;
+      setTimeout(typeText, typingSpeed);
+    } else {
+      setTimeout(eraseText, delayBetweenTexts);
+    }
+  }
+
+  function eraseText() {
+    if (charIndex > 0) {
+      typingTextElement.innerHTML = textsArray[textIndex].substring(0, charIndex - 1);
+      charIndex--;
+      setTimeout(eraseText, erasingSpeed);
+    } else {
+      textIndex = (textIndex + 1) % textsArray.length; // Move to the next text in array
+      setTimeout(typeText, typingSpeed);
+    }
+  }
+
+  document.addEventListener("DOMContentLoaded", () => {
+    if (textsArray.length) typeText();
+  });
+</script>
+<div class="presenceWrapper">
+<div class="presenceContainer">
+<div class="discordInfos">
+<div class="discordAvatar">
+<img class="avatarImage" src="images/aww.png" alt="Discord Avatar">
+</div>
+<div class="discordActivity">
+<div class="discordUser">
+<div class="discordUserDiv">
+<span>mvb._ (@𝕭 ✝)</span>
+</div>
+<h3>God first ✝</h3>
+</div>
+<div class="discordActivityImage"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div style="display:none" id="curEffClr">#ffffff</div>
+<audio id="enter-sound" src="media/c8304c0b-cb38-4316-af3a-4322c4bac1ea.mp4" loop></audio>
+
+<div class=linkedAccounts>
+  <a data-type=Snapchat class=linkedAccountsRedirect target=_blank href=snapchat.com/add/biggiecheese584 style="color:#ffffff;text-shadow:1px 1px 5px #ffffff">
+    <svg xmlns="http://www.w3.org/2000/svg" width="2.1em" height="2.1em" viewBox="0 0 256 256" style="filter:drop-shadow(1px 1px 5px rgb(255, 255, 255))">
+      <path fill="white" d="M245.47 189.74c-7.1 6.67-17.67 7.71-27.88 8.72c-6.31.62-12.83 1.27-16.39 3.23c-3.37 1.86-6.85 6.62-10.21 11.22c-5.4 7.41-11.53 15.8-21.23 18.28a26.4 26.4 0 0 1-6.64.81c-6.88 0-13.7-2.32-19.9-4.43c-5.55-1.89-10.8-3.68-15.21-3.68s-9.66 1.79-15.21 3.68c-8.19 2.79-17.47 6-26.54 3.62c-9.71-2.48-15.84-10.87-21.24-18.28c-3.36-4.6-6.84-9.36-10.21-11.22c-3.56-2-10.08-2.61-16.38-3.23c-10.22-1-20.79-2.05-27.89-8.72a8 8 0 0 1 2.77-13.36c.09 0 12.84-4.86 25.36-19a94 94 0 0 0 17.74-30.2L37 119.43a8 8 0 1 1 6-14.86l17.85 7.15A151.2 151.2 0 0 0 64 80a64 64 0 0 1 128 0a149 149 0 0 0 3.21 31.73l17.79-7.16a8 8 0 1 1 6 14.86l-19.3 7.72c14.08 38.35 42.64 49.09 43 49.23a8 8 0 0 1 2.77 13.36"></path>
+    </svg>
+  </a>
+  <a data-type=Spotify class=linkedAccountsRedirect target=_blank href=open.spotify.com/playlist/2uUzRaKJoKtJ8dJ8U7uFo9?si=bf819e7b39d64d51 style="color:#ffffff;text-shadow:1px 1px 5px #ffffff">
+    <svg xmlns="http://www.w3.org/2000/svg" width="2.1em" height="2.1em" viewBox="0 0 24 24" style="filter:drop-shadow(1px 1px 5px rgb(255, 255, 255))">
+      <path fill="white" fillRule="evenodd" d="M19.098 10.638C15.23 8.341 8.85 8.13 5.158 9.251a1.122 1.122 0 1 1-.652-2.148C8.745 5.816 15.79 6.064 20.244 8.708a1.122 1.122 0 1 1-1.146 1.93m-.126 3.403a.936.936 0 0 1-1.287.308c-3.225-1.983-8.142-2.557-11.958-1.399a.937.937 0 0 1-1.167-.623a.937.937 0 0 1 .624-1.167c4.358-1.322 9.776-.682 13.48 1.594c.44.271.578.847.308 1.287m-1.469 3.267a.75.75 0 0 1-1.028.25c-2.818-1.723-6.365-2.112-10.542-1.158a.748.748 0 1 1-.333-1.458c4.571-1.045 8.492-.595 11.655 1.338a.75.75 0 0 1 .248 1.028M12 0C5.373 0 0 5.372 0 12s5.373 12 12 12c6.628 0 12-5.372 12-12S18.628 0 12 0"></path>
+    </svg>
+</a>
+<a data-type=Bible class=linkedAccountsRedirect target=_blank href=thekingsbible.com style="color:#ffffff;text-shadow:1px 1px 5px #ffffff">
+  <svg xmlns="http://www.w3.org/2000/svg" width="2.1em" height="2.1em" viewBox="0 0 448 512" style="filter:drop-shadow(1px 1px 5px rgb(255, 255, 255))">
+    <path fill="white" d="M96 0C43 0 0 43 0 96v320c0 53 43 96 96 96h320c17.7 0 32-14.3 32-32s-14.3-32-32-32v-64c17.7 0 32-14.3 32-32V32c0-17.7-14.3-32-32-32zm0 384h256v64H96c-17.7 0-32-14.3-32-32s14.3-32 32-32M208 80c0-8.8 7.2-16 16-16h32c8.8 0 16 7.2 16 16v48h48c8.8 0 16 7.2 16 16v32c0 8.8-7.2 16-16 16h-48v112c0 8.8-7.2 16-16 16h-32c-8.8 0-16-7.2-16-16V192h-48c-8.8 0-16-7.2-16-16v-32c0-8.8 7.2-16 16-16h48z"></path>
+  </svg>
+</a>
+<a data-type=TikTok class=linkedAccountsRedirect target=_blank href=tiktok.com/biggiecheese0584 style="color:#ffffff;text-shadow:1px 1px 5px #ffffff">
+  <svg xmlns="http://www.w3.org/2000/svg" width="2.1em" height="2.1em" viewBox="0 0 448 512" style="filter:drop-shadow(1px 1px 5px rgb(255, 255, 255))">
+    <path fill="white" d="M448 209.91a210.06 210.06 0 0 1-122.77-39.25v178.72A162.55 162.55 0 1 1 185 188.31v89.89a74.62 74.62 0 1 0 52.23 71.18V0h88a121 121 0 0 0 1.86 22.17A122.18 122.18 0 0 0 381 102.39a121.43 121.43 0 0 0 67 20.14Z"></path>
+  </svg>
+</a>
+<a data-type=Discord class=linkedAccountsRedirect target=_blank href=discord.com/mvb._ style="color:#ffffff;text-shadow:1px 1px 5px #ffffff">
+  <svg xmlns="http://www.w3.org/2000/svg" width="2.1em" height="2.1em" viewBox="0 0 24 24" style="filter:drop-shadow(1px 1px 5px rgb(255, 255, 255))">
+    <path fill="white" d="M20.317 4.492c-1.53-.69-3.17-1.2-4.885-1.49a.075.075 0 0 0-.079.036c-.21.369-.444.85-.608 1.23a18.6 18.6 0 0 0-5.487 0a12 12 0 0 0-.617-1.23A.08.08 0 0 0 8.562 3c-1.714.29-3.354.8-4.885 1.491a.1.1 0 0 0-.032.027C.533 9.093-.32 13.555.099 17.961a.08.08 0 0 0 .031.055a20 20 0 0 0 5.993 2.98a.08.08 0 0 0 .084-.026a14 14 0 0 0 1.226-1.963a.074.074 0 0 0-.041-.104a13 13 0 0 1-1.872-.878a.075.075 0 0 1-.008-.125q.19-.14.372-.287a.08.08 0 0 1 .078-.01c3.927 1.764 8.18 1.764 12.061 0a.08.08 0 0 1 .079.009q.18.148.372.288a.075.075 0 0 1-.006.125q-.895.515-1.873.877a.075.075 0 0 0-.041.105c.36.687.772 1.341 1.225 1.962a.08.08 0 0 0 .084.028a20 20 0 0 0 6.002-2.981a.08.08 0 0 0 .032-.054c.5-5.094-.838-9.52-3.549-13.442a.06.06 0 0 0-.031-.028M8.02 15.278c-1.182 0-2.157-1.069-2.157-2.38c0-1.312.956-2.38 2.157-2.38c1.21 0 2.176 1.077 2.157 2.38c0 1.312-.956 2.38-2.157 2.38m7.975 0c-1.183 0-2.157-1.069-2.157-2.38c0-1.312.955-2.38 2.157-2.38c1.21 0 2.176 1.077 2.157 2.38c0 1.312-.946 2.38-2.157 2.38"></path>
+  </svg>
+</a>
+</div>
+<script>function enterSite(){document.querySelector(".enter-container").classList.add("fade-out"),document.querySelector("#enter-sound").play(),setTimeout((()=>{document.querySelector(".enter-container").style.display="none"}),500)}window.addEventListener("load",(()=>{document.querySelector(".fade-in").classList.add("fade-in")}))</script>
+<script>
+  function enterSite() {
+      document.querySelector(".enter-container").classList.add("fade-out"),
+      document.querySelector(".background").play(),
+      setTimeout(( () => {
+          document.querySelector(".enter-container").style.display = "none"
+      }
+      ), 500)
+  }
+</script>
+            <script>
+    document.addEventListener('contextmenu', function(e) {
+        e.preventDefault();
+    });
+
+    document.addEventListener('keydown', function(e) {
+        // F12 key
+        if (e.key === 'F12' || e.keyCode === 123) {
+            e.preventDefault();
+        }
+        // Ctrl+Shift+I (open developer tools)
+        if (e.ctrlKey && e.shiftKey && e.key === 'I') {
+            e.preventDefault();
+        }
+        // Ctrl+Shift+J (open developer tools)
+        if (e.ctrlKey && e.shiftKey && e.key === 'J') {
+            e.preventDefault();
+        }
+        // Ctrl+U (view source)
+        if (e.ctrlKey && e.key === 'U') {
+            e.preventDefault();
+        }
+    });
+</script>
+<script src="https://unpkg.com/cursor-effects@latest/dist/browser.js"></script>
+<script>
+    new cursoreffects.fairyDustCursor({
+        colors: ["#ffffff"]
+    });
+</script>
+</body></html>
