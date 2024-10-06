@@ -85,7 +85,7 @@ body {
 
 /* Tooltip */
 .profileUsername:hover::after {
-    content: 'UID: 8';
+    content: 'UID: 3';
     position: absolute;
     top: -25px; /* Adjust this value to position the tooltip above */
     left: 50%; /* Aligns the tooltip's left side to the center of the element */
@@ -564,7 +564,7 @@ body {
 }
 
 .username::after {
-    content: "UID 8";
+    content: "UID 3";
     position: absolute;
     left: 7%;
     transform: translateX(-50%);
