@@ -15,6 +15,20 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
         <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=Bungee&amp;family=Creepster&amp;family=Gloria+Hallelujah&amp;family=Permanent+Marker&amp;display=swap" rel="stylesheet">
         <style>
+          @font-face {
+              font-family: Werebeast;
+              src: url('/fonts/werebeast.ttf') format('truetype')
+          }
+  
+          a,body,button,div,h1,h2,h3,h4,h5,h6,input,p,span,textarea {
+              font-family: Werebeast,sans-serif!important
+          }
+  
+          #typingText,#typingTexts,.badge-item,.discordActivity,.discordUser,.discordUserBadge,.discordUserBadges,.discordUserDiv,.enter-text,.fixed-tips,.linkedAccounts,.presenceContainer,.presenceWrapper,.profileBio,.profileUsername,.tooltip {
+              font-family: Werebeast,sans-serif!important
+          }
+      </style>
+        <style>
 
                   .snowflake {
             position: fixed;
@@ -85,8 +99,25 @@
     <br>
     fbi@genocide.fun
     <br>
+    killzee
+    <br>
   </div>
 </i>
+
+<style>
+  /* Blinking Cursor */
+  @keyframes blinkCursor {
+    50% { border-right-color: transparent; }
+  }
+
+  #typingText {
+    border-right: 2px solid rgba(255, 255, 255, 0.75); /* Blinking cursor effect */
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden;
+    animation: blinkCursor 0.75s step-end infinite;
+  }
+</style>
 
 <script>
   const typingTextElement = document.getElementById('typingText');
@@ -161,6 +192,7 @@
 </div>
 </div>
 <div style="display:none" id="curEffClr">#ffffff</div>
+<script src="js/cat.js"></script>
 <audio id="enter-sound" src="media/Twice as Bright (intro).mp3" loop></audio>
 <script>function enterSite(){document.querySelector(".enter-container").classList.add("fade-out"),document.querySelector("#enter-sound").play(),setTimeout((()=>{document.querySelector(".enter-container").style.display="none"}),500)}window.addEventListener("load",(()=>{document.querySelector(".fade-in").classList.add("fade-in")}))</script>
 
@@ -195,26 +227,6 @@
     });
 </script>
 <script>
-  (function() {
-      const devTools = { isOpen: false, orientation: null };
-
-      const threshold = 160; // Threshold for detecting opened dev tools based on window dimensions
-      
-      setInterval(() => {
-          const widthThreshold = window.outerWidth - window.innerWidth > threshold;
-          const heightThreshold = window.outerHeight - window.innerHeight > threshold;
-
-          if ((widthThreshold || heightThreshold) && !devTools.isOpen) {
-              devTools.isOpen = true;
-              // Close the tab when dev tools is detected
-              window.close();  // This might get blocked by browsers in some cases
-          } else if (!widthThreshold && !heightThreshold && devTools.isOpen) {
-              devTools.isOpen = false;
-          }
-      }, 500); // Check every 500ms
-  })();
-</script>
-<script>
   const container = document.querySelector('.container');
 
   container.addEventListener('mousemove', (event) => {
@@ -232,4 +244,32 @@
       container.style.transform = 'perspective(1000px) rotateX(0) rotateY(0)'; // Reset to original position
   });
 </script>
+<script>
+  (function() {
+      const threshold = 160; // Threshold for detecting opened dev tools based on window dimensions
+      let isDevToolsOpen = false;
+
+      function checkDevTools() {
+          const widthThreshold = window.outerWidth - window.innerWidth > threshold;
+          const heightThreshold = window.outerHeight - window.innerHeight > threshold;
+
+          // Check if dev tools are open
+          if ((widthThreshold || heightThreshold) && !isDevToolsOpen) {
+              isDevToolsOpen = true; // Set the state
+              window.close(); // Attempt to close the tab
+          } else if (!(widthThreshold || heightThreshold)) {
+              isDevToolsOpen = false; // Reset the state when dev tools are closed
+          }
+      }
+
+      // Use requestAnimationFrame for better performance
+      function monitorDevTools() {
+          checkDevTools();
+          requestAnimationFrame(monitorDevTools); // Keep monitoring
+      }
+
+      monitorDevTools(); // Start monitoring
+  })();
+</script>
+
 </body></html>
