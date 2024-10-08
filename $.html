@@ -79,6 +79,52 @@
   let typingSpeed = 100; // Adjust typing speed (in milliseconds)
   let erasingSpeed = 50; // Adjust erasing speed (in milliseconds)
   let delayBetweenTexts = 1500; // Time delay between typing each text (in milliseconds)
+  let typingStarted = false;
+
+  function typeText() {
+    if (charIndex < textsArray[textIndex].length) {
+      typingTextElement.innerHTML += textsArray[textIndex].charAt(charIndex);
+      charIndex++;
+      setTimeout(typeText, typingSpeed);
+    } else {
+      setTimeout(eraseText, delayBetweenTexts);
+    }
+  }
+
+  function eraseText() {
+    if (charIndex > 0) {
+      typingTextElement.innerHTML = textsArray[textIndex].substring(0, charIndex - 1);
+      charIndex--;
+      setTimeout(eraseText, erasingSpeed);
+    } else {
+      textIndex = (textIndex + 1) % textsArray.length; // Move to the next text in array
+      setTimeout(typeText, typingSpeed);
+    }
+  }
+
+  function startTyping() {
+    if (!typingStarted) {  // Ensure it only starts once
+      typingStarted = true;
+      if (textsArray.length) typeText();
+    }
+  }
+
+  // Listen for a left mouse click to start typing
+  document.addEventListener("click", (event) => {
+    if (event.button === 0) { // 0 is for left mouse button
+      startTyping();
+    }
+  });
+</script>
+
+<script>
+  const typingTextElement = document.getElementById('typingText');
+  const textsArray = document.getElementById('typingTexts').innerHTML.trim().split('<br>'); // Fetch texts and split them
+  let textIndex = 0;
+  let charIndex = 0;
+  let typingSpeed = 100; // Adjust typing speed (in milliseconds)
+  let erasingSpeed = 50; // Adjust erasing speed (in milliseconds)
+  let delayBetweenTexts = 1500; // Time delay between typing each text (in milliseconds)
 
   function typeText() {
     if (charIndex < textsArray[textIndex].length) {
