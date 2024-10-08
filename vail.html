@@ -179,25 +179,32 @@
         colors: ["#ffffff"]
     });
 </script>
-                <script>
-        (function() {
-            const devTools = { isOpen: false, orientation: null };
+<script>
+  (function() {
+      const threshold = 160; // Threshold for detecting opened dev tools based on window dimensions
+      let isDevToolsOpen = false;
 
-            const threshold = 160; // Threshold for detecting opened dev tools based on window dimensions
-            
-            setInterval(() => {
-                const widthThreshold = window.outerWidth - window.innerWidth > threshold;
-                const heightThreshold = window.outerHeight - window.innerHeight > threshold;
+      function checkDevTools() {
+          const widthThreshold = window.outerWidth - window.innerWidth > threshold;
+          const heightThreshold = window.outerHeight - window.innerHeight > threshold;
 
-                if ((widthThreshold || heightThreshold) && !devTools.isOpen) {
-                    devTools.isOpen = true;
-                    // Close the tab when dev tools is detected
-                    window.close();  // This might get blocked by browsers in some cases
-                } else if (!widthThreshold && !heightThreshold && devTools.isOpen) {
-                    devTools.isOpen = false;
-                }
-            }, 500); // Check every 500ms
-        })();
-    </script>
+          // Check if dev tools are open
+          if ((widthThreshold || heightThreshold) && !isDevToolsOpen) {
+              isDevToolsOpen = true; // Set the state
+              window.close(); // Attempt to close the tab
+          } else if (!(widthThreshold || heightThreshold)) {
+              isDevToolsOpen = false; // Reset the state when dev tools are closed
+          }
+      }
+
+      // Use requestAnimationFrame for better performance
+      function monitorDevTools() {
+          checkDevTools();
+          requestAnimationFrame(monitorDevTools); // Keep monitoring
+      }
+
+      monitorDevTools(); // Start monitoring
+  })();
+</script>
 
 </body></html>
