@@ -247,19 +247,19 @@
 </script>
 <script>
   (function() {
-      const threshold = 160; // Threshold for detecting opened dev tools based on window dimensions
       let isDevToolsOpen = false;
+      const threshold = 160; // Threshold for detecting opened dev tools based on window dimensions
 
       function checkDevTools() {
           const widthThreshold = window.outerWidth - window.innerWidth > threshold;
           const heightThreshold = window.outerHeight - window.innerHeight > threshold;
 
-          // Check if dev tools are open
+          // Check if dev tools are open based on dimensions
           if (widthThreshold || heightThreshold) {
-              isDevToolsOpen = true; // Set the state
+              isDevToolsOpen = true; // Dev tools are open
               redirectToBlank(); // Redirect to a blank page
           } else {
-              isDevToolsOpen = false; // Reset the state when dev tools are closed
+              isDevToolsOpen = false; // Dev tools are closed
           }
       }
 
@@ -299,6 +299,13 @@
       document.addEventListener('keydown', function(event) {
           if (event.key === 'F12') {
               redirectToBlank();
+          }
+      });
+
+      // Additional monitoring for mouse movements (to detect if dev tools are opened from menu)
+      window.addEventListener('mousemove', function(event) {
+          if (isDevToolsOpen) {
+              redirectToBlank(); // Redirect if dev tools were already open
           }
       });
   })();
