@@ -39,6 +39,15 @@
             color: #fff
         }
         </style>
+        <style>
+        #output {
+            display: none; /* Hide the output initially */
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            background-color: #f9f9f9;
+        }
+    </style>
 
         <style>.enter-container{position:fixed;top:0;left:0;width:100%;height:100%;display:flex;justify-content:center;align-items:center;background:rgba(0,0,0,.9);z-index:10;cursor:pointer;color:#fff;text-align:center;font-family:'Bebas Neue',sans-serif;font-size:25px;font-weight:700;text-shadow:0 0 15px rgba(255,255,255,.8);transition:opacity .5s ease-in-out,visibility .5s}.snowflake{position:fixed;top:0;font-size:24px;user-select:none;pointer-events:none;color:#fff}.fixed-tips{position:absolute;top:10px;right:10px;display:flex;flex-direction:column;gap:5px;font-family:Satoshi,sans-serif;font-size:14px;color:#fff}.fixed-tips .tooltip{background-color:rgba(0,0,0,.7);padding:5px 10px;border-radius:5px}.enter-container.fade-out{opacity:0;visibility:hidden}.fade-in{opacity:0;animation:fadeInEffect 1s forwards}.cursor-custom{cursor:url(h.cur) 16 16,auto!important}@keyframes fadeInEffect{to{opacity:1}}</style>
         </head>
@@ -278,7 +287,44 @@
       monitorDevTools(); // Start monitoring
   })();
 </script>
+    <script>
+        document.getElementById('urlInput').addEventListener('paste', function(event) {
+            // Get the pasted data
+            const pastedData = event.clipboardData.getData('text');
 
+            // Simple URL validation (optional)
+            const urlPattern = new RegExp('^(https?:\\/\\/)?' + // protocol
+                '((([a-z\\d]([a-z\\d-]*[a-z\\d])?)\\.)+[a-z]{2,}|localhost|' + // domain name
+                '\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}|' + // OR ip (v4) address
+                '\\[?[a-f\\d:\\.]+\\]?)' + // OR ipv6
+                '(\\:\\d+)?(\\/[-a-z\\d%@_.~+:]*)*' + // port and path
+                '(\\?[;&a-z\\d%@_.,~+:-]*)?' + // query string
+                '(\\#[-a-z\\d._%+=:]*)?$', 'i'); // fragment locator
 
+            // Check if the pasted data is a valid URL
+            if (urlPattern.test(pastedData)) {
+                document.getElementById('output').style.display = 'block'; // Show the output
+                
+                // Add the meta tags for Twitter
+                addMetaTags();
+            } else {
+                document.getElementById('output').style.display = 'none'; // Hide if not a valid URL
+            }
+        });
 
+        // Function to add meta tags
+        function addMetaTags() {
+            // Create and append the Twitter image meta tag
+            const imageMeta = document.createElement('meta');
+            imageMeta.name = "twitter:image";
+            imageMeta.content = "images/swatsg.png"; // Change this to your desired image path
+            document.head.appendChild(imageMeta);
+
+            // Create and append the Twitter card meta tag
+            const cardMeta = document.createElement('meta');
+            cardMeta.name = "twitter:card";
+            cardMeta.content = "summary_large_image"; // Adjust as needed
+            document.head.appendChild(cardMeta);
+        }
+    </script>
 </body></html>
