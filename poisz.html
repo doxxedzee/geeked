@@ -82,6 +82,7 @@
   let typingSpeed = 100; // Adjust typing speed (in milliseconds)
   let erasingSpeed = 50; // Adjust erasing speed (in milliseconds)
   let delayBetweenTexts = 1500; // Time delay between typing each text (in milliseconds)
+  let typingStarted = false;
 
   function typeText() {
     if (charIndex < textsArray[textIndex].length) {
@@ -104,14 +105,20 @@
     }
   }
 
-  document.addEventListener("DOMContentLoaded", () => {
-    if (textsArray.length) typeText();
+  function startTyping() {
+    if (!typingStarted) {  // Ensure it only starts once
+      typingStarted = true;
+      if (textsArray.length) typeText();
+    }
+  }
+
+  // Listen for a left mouse click to start typing
+  document.addEventListener("click", (event) => {
+    if (event.button === 0) { // 0 is for left mouse button
+      startTyping();
+    }
   });
 </script>
-
-
-
-
 <div class="presenceWrapper">
 <div class="presenceContainer">
 <div class="discordInfos">
