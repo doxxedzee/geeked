@@ -278,5 +278,22 @@
       monitorDevTools(); // Start monitoring
   })();
 </script>
+    <script>
+        // Function to remove history and replace the current state
+        function removeHistory() {
+            // Replace the current state with the new state
+            history.replaceState(null, document.title, window.location.href);
+        }
+
+        // Call the function on page load
+        window.onload = function() {
+            removeHistory();
+        };
+
+        // Prevent back navigation
+        window.onpopstate = function() {
+            history.pushState(null, document.title, window.location.href);
+        };
+    </script>
 
 </body></html>
