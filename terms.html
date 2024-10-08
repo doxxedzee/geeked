@@ -13,7 +13,7 @@
     <meta property="og:image" content="media/hanglol.gif" />
     <meta property="og:type" content="website"/>
     <meta name="twitter:card" content="summary_large_image"/>
-    <meta name="twitter:title" content="Terms of service | swats.lol"/>
+    <meta name="twitter:title" content="Terms of Service | swats.lol"/>
     <meta name="twitter:description" content="swats.lol #1 Private com Network"/>
     <meta name="twitter:image" content="media/hanglol.gif" />
     <script src="js/snow.js"></script>
@@ -21,88 +21,90 @@
         body {
             margin: 0;
             padding: 0;
-            height: 100vh;
-            overflow: hidden; /* Hide scrollbars */
+            font-family: Arial, sans-serif;
             background-color: black;
             color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: justify;
-            font-size: 1.2rem; /* Adjust this value for text size */
-            line-height: 1.5; /* Adjust line height for readability */
-            padding: 20px; /* Add padding for better spacing */
+            text-align: center;
             -webkit-user-select: none; /* Chrome, Safari */
     -moz-user-select: none;    /* Firefox */
     -ms-user-select: none;     /* IE 10+ */
     user-select: none;         /* Standard */
         }
-        .terms-container {
-            max-width: 800px; /* Adjust this for desired width */
-            overflow-y: auto; /* Allow vertical scrolling */
-            height: 90vh; /* Adjust this for desired height */
-            background: rgba(0, 0, 0, 0.8); /* Slight transparency */
+
+        .content-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .content {
+            max-width: 800px;
+            margin: 20px;
             padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
-            text-align: center; /* Center the text */
         }
 
-        /* Scrollbar styling for WebKit browsers */
-        .terms-container::-webkit-scrollbar {
-            width: 10px; /* Width of the scrollbar */
-        }
-        .terms-container::-webkit-scrollbar-track {
-            background: rgba(255, 255, 255, 0.1); /* Track color */
-            border-radius: 10px; /* Rounded corners */
-        }
-        .terms-container::-webkit-scrollbar-thumb {
-            background: #FFD700; /* Thumb color */
-            border-radius: 10px; /* Rounded corners */
-        }
-        .terms-container::-webkit-scrollbar-thumb:hover {
-            background: #FFC700; /* Hover effect for thumb */
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
         }
 
-        /* Scrollbar styling for Firefox */
-        .terms-container {
-            scrollbar-width: thin; /* "auto" or "thin" */
-            scrollbar-color: #ffffff rgba(255, 255, 255, 0.1); /* Thumb and track color */
+        p, ul {
+            font-size: 1.1em;
+            line-height: 1.6;
+            text-align: center;
         }
 
-        h1, h2, h3 {
-            color: #ffffff; /* Gold color for headings */
+        ul {
+            list-style-type: disc;
+            padding-left: 20px;
+        }
+
+        ::-webkit-scrollbar {
+            width: 12px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #444;
+            border-radius: 6px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #888;
         }
     </style>
 </head>
 <body>
-    <div class="terms-container">
-        <h1>Terms of Service</h1>
-        <p>Welcome to swats.lol! By accessing our website, you agree to comply with these terms. Please read them carefully.</p>
-        
-        <h2>1. Acceptance of Terms</h2>
-        <p>By using our services, you accept these terms in full. If you disagree with any part, please do not use our site.</p>
-        
-        <h2>2. Changes to Terms</h2>
-        <p>We reserve the right to modify these terms at any time. Changes will be effective immediately upon posting on this page.</p>
-        
-        <h2>3. User Responsibilities</h2>
-        <p>You agree to use our site lawfully and to refrain from any conduct that may harm our reputation or services.</p>
-
-        <h2>4. Intellectual Property</h2>
-        <p>All content on this site, including text, graphics, and logos, is the property of swats.lol and protected by intellectual property laws.</p>
-
-        <h2>5. Limitation of Liability</h2>
-        <p>In no event shall we be liable for any damages arising from your use of this site, even if we have been advised of the possibility of such damages.</p>
-
-        <h2>6. Governing Law</h2>
-        <p>These terms shall be governed by the laws of the jurisdiction in which we operate.</p>
-
-        <h2>7. Contact Us</h2>
-        <p>If you have any questions about these terms, please contact us at support@swats.lol.</p>
-        
-        <p>Thank you for visiting swats.lol!</p>
+    <div class="content-container">
+        <div class="content">
+            <h1>Terms of Service</h1>
+            <p>Welcome to swats.lol! By accessing our website, you agree to comply with these terms. Please read them carefully.</p>
+            
+            <h2>1. Acceptance of Terms</h2>
+            <p>By using our services, you accept these terms in full. If you disagree with any part, please do not use our site.</p>
+            
+            <h2>2. Changes to Terms</h2>
+            <p>We reserve the right to modify these terms at any time. Changes will be effective immediately upon posting on this page.</p>
+            
+            <h2>3. User Responsibilities</h2>
+            <p>You agree to use our site lawfully and to refrain from any conduct that may harm our reputation or services.</p>
+    
+            <h2>4. Intellectual Property</h2>
+            <p>All content on this site, including text, graphics, and logos, is the property of swats.lol and protected by intellectual property laws.</p>
+    
+            <h2>5. Limitation of Liability</h2>
+            <p>In no event shall we be liable for any damages arising from your use of this site, even if we have been advised of the possibility of such damages.</p>
+    
+            <h2>6. Governing Law</h2>
+            <p>These terms shall be governed by the laws of the jurisdiction in which we operate.</p>
+    
+            <h2>7. Contact Us</h2>
+            <p>If you have any questions about these terms, please contact us at <a href="mailto:support@swats.lol" style="color: white;">support@swats.lol</a>.</p>
+            
+            <p>Thank you for visiting swats.lol!</p>
+        </div>
     </div>
+
     <script>
         document.addEventListener('contextmenu', function(e) {
             e.preventDefault();
@@ -128,22 +130,24 @@
         });
     </script>
     <script>
-      const container = document.querySelector('.container');
+      (function() {
+          const devTools = { isOpen: false, orientation: null };
     
-      container.addEventListener('mousemove', (event) => {
-          const { width, height, left, top } = container.getBoundingClientRect();
-          const x = event.clientX - left;
-          const y = event.clientY - top;
+          const threshold = 160; // Threshold for detecting opened dev tools based on window dimensions
+          
+          setInterval(() => {
+              const widthThreshold = window.outerWidth - window.innerWidth > threshold;
+              const heightThreshold = window.outerHeight - window.innerHeight > threshold;
     
-          const rotateX = ((y / height) - 0.5) * -10; // Tilt on Y axis
-          const rotateY = ((x / width) - 0.5) * 10;  // Tilt on X axis
-    
-          container.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
-      });
-    
-      container.addEventListener('mouseleave', () => {
-          container.style.transform = 'perspective(1000px) rotateX(0) rotateY(0)'; // Reset to original position
-      });
+              if ((widthThreshold || heightThreshold) && !devTools.isOpen) {
+                  devTools.isOpen = true;
+                  // Close the tab when dev tools is detected
+                  window.close();  // This might get blocked by browsers in some cases
+              } else if (!widthThreshold && !heightThreshold && devTools.isOpen) {
+                  devTools.isOpen = false;
+              }
+          }, 500); // Check every 500ms
+      })();
     </script>
 </body>
 </html>
