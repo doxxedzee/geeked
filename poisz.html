@@ -297,6 +297,24 @@
           })();
       </script>
 <script>
+  const container = document.querySelector('.container');
+
+  container.addEventListener('mousemove', (event) => {
+      const { width, height, left, top } = container.getBoundingClientRect();
+      const x = event.clientX - left;
+      const y = event.clientY - top;
+
+      const rotateX = ((y / height) - 0.5) * -10; // Tilt on Y axis
+      const rotateY = ((x / width) - 0.5) * 10;  // Tilt on X axis
+
+      container.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+  });
+
+  container.addEventListener('mouseleave', () => {
+      container.style.transform = 'perspective(1000px) rotateX(0) rotateY(0)'; // Reset to original position
+  });
+</script>
+<script>
   (function() {
       const threshold = 160; // Threshold for detecting opened dev tools based on window dimensions
       let isDevToolsOpen = false;
