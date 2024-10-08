@@ -21,7 +21,7 @@ body {
     background-size: cover;
     object-fit: cover;
 }
-
+/* Container with Glow Effect on Hover */
 .container {
     position: relative;
     display: flex;
@@ -32,14 +32,16 @@ body {
     min-height: 15rem;
     padding: 35px 15px;
     width: 100%;
-    max-width: 650px; /* 650 */
+    max-width: 650px;
     text-align: center;
     outline: 3px solid rgba(255, 255, 255, 0.089);
-    box-shadow: 0px 0px 100px 50px #00000060;
-            transition: transform 0.1s ease-out; /* Smooth out the tilting effect */
-        will-change: transform; /* Hint to browser for performance */
+    box-shadow: 0px 0px 20px 5px rgba(0, 0, 0, 0.6);
+    transition: box-shadow 0.3s ease-in-out;
 }
 
+.container:hover {
+    box-shadow: 0 0 30px 15px rgba(255, 255, 255, 0.6); /* Glow effect */
+}
 
 .container .banner {
     position: absolute;
