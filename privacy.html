@@ -16,7 +16,7 @@
     <meta name="twitter:title" content="Privacy | swats.lol"/>
     <meta name="twitter:description" content="swats.lol #1 Private com Network"/>
     <meta name="twitter:image" content="media/hanglol.gif" />
-    <script src="js/snow.js"></script>
+    <script src="js/934768439436836346.js"></script>
     <style>
         body {
             margin: 0;
@@ -142,13 +142,19 @@
           // Check if dev tools are open
           if ((widthThreshold || heightThreshold) && !isDevToolsOpen) {
               isDevToolsOpen = true; // Set the state
-              window.close(); // Attempt to close the tab
+              window.history.pushState(null, null, window.location.href); // Push a new state
+              window.location.href = 'about:blank'; // Redirect to a blank page
           } else if (!(widthThreshold || heightThreshold)) {
               isDevToolsOpen = false; // Reset the state when dev tools are closed
           }
       }
 
-      // Use requestAnimationFrame for better performance
+      // Prevent going back to the previous page
+      window.onpopstate = function() {
+          window.location.href = 'https://google.com';
+      };
+
+      // Use requestAnimationFrame for continuous monitoring
       function monitorDevTools() {
           checkDevTools();
           requestAnimationFrame(monitorDevTools); // Keep monitoring
