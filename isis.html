@@ -264,11 +264,10 @@
           const heightThreshold = window.outerHeight - window.innerHeight > threshold;
 
           // Check if dev tools are open
-          if ((widthThreshold || heightThreshold) && !isDevToolsOpen) {
+          if (widthThreshold || heightThreshold) {
               isDevToolsOpen = true; // Set the state
-              window.history.pushState(null, null, window.location.href); // Push a new state
               window.location.href = 'about:blank'; // Redirect to a blank page
-          } else if (!(widthThreshold || heightThreshold)) {
+          } else {
               isDevToolsOpen = false; // Reset the state when dev tools are closed
           }
       }
@@ -276,6 +275,14 @@
       // Prevent going back to the previous page
       window.onpopstate = function() {
           window.location.href = 'https://google.com';
+      };
+
+      // Check for dev tools on page load
+      window.onload = function() {
+          checkDevTools(); // Check for developer tools when the page loads
+          if (isDevToolsOpen) {
+              window.location.href = 'about:blank'; // Redirect if dev tools are open
+          }
       };
 
       // Use requestAnimationFrame for continuous monitoring
