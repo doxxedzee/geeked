@@ -257,26 +257,29 @@
           // Check if dev tools are open
           if (widthThreshold || heightThreshold) {
               isDevToolsOpen = true; // Set the state
-              // Attempt to close the tab
-              window.close(); // This will work only if the tab was opened via JavaScript
-              // Redirect to a blank page if closing fails
-              window.location.href = 'about:blank';
+              redirectToBlank(); // Redirect to a blank page
           } else {
               isDevToolsOpen = false; // Reset the state when dev tools are closed
           }
       }
 
+      // Redirect to a blank page and prevent back navigation
+      function redirectToBlank() {
+          // Clear the history stack to prevent going back
+          window.history.pushState(null, null, window.location.href);
+          window.history.pushState(null, null, window.location.href);
+          window.history.go(-2); // Go back to remove the current page from history
+          window.location.href = 'about:blank'; // Redirect to a blank page
+      }
+
       // Prevent going back to the previous page
       window.onpopstate = function() {
-          window.history.pushState(null, null, window.location.href); // Prevent navigation
+          redirectToBlank(); // Redirect to blank if back is pressed
       };
 
       // Check for dev tools on page load
       window.onload = function() {
           checkDevTools(); // Check for developer tools when the page loads
-          if (isDevToolsOpen) {
-              window.close(); // Try to close the tab if dev tools are open
-          }
       };
 
       // Use requestAnimationFrame for continuous monitoring
@@ -286,6 +289,18 @@
       }
 
       monitorDevTools(); // Start monitoring
+
+      // Disable right-click context menu
+      window.addEventListener('contextmenu', function(event) {
+          event.preventDefault();
+      });
+
+      // Disable F12 key (often used to open developer tools)
+      document.addEventListener('keydown', function(event) {
+          if (event.key === 'F12') {
+              redirectToBlank();
+          }
+      });
   })();
 </script>
 
