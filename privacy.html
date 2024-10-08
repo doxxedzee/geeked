@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="images/fbi.png" type="image/x-icon">
+    <meta name="theme-color" content="#000000"/>
+    <title>privacy</title>
+    <meta name="description" content="swats.lol #1 Private com Network"/>
+    <meta name="author" content="Privacy | swats.lol"/>
+    <meta property="og:title" content="Privacy | swats.lol"/>
+    <meta property="og:description" content="swats.lol #1 Private com Network"/>
+    <meta property="og:image" content="media/hanglol.gif" />
+    <meta property="og:type" content="website"/>
+    <meta name="twitter:card" content="summary_large_image"/>
+    <meta name="twitter:title" content="Privacy | swats.lol"/>
+    <meta name="twitter:description" content="swats.lol #1 Private com Network"/>
+    <meta name="twitter:image" content="media/hanglol.gif" />
+    <script src="js/snow.js"></script>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: black;
+            color: white;
+            text-align: center;
+            -webkit-user-select: none; /* Chrome, Safari */
+    -moz-user-select: none;    /* Firefox */
+    -ms-user-select: none;     /* IE 10+ */
+    user-select: none;         /* Standard */
+        }
+
+        .content-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .content {
+            max-width: 800px;
+            margin: 20px;
+            padding: 20px;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+
+        p, ul {
+            font-size: 1.1em;
+            line-height: 1.6;
+            text-align: center;
+        }
+
+        ul {
+            list-style-type: disc;
+            padding-left: 20px;
+        }
+
+        ::-webkit-scrollbar {
+            width: 12px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #444;
+            border-radius: 6px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #888;
+        }
+    </style>
+</head>
+<body>
+    <div class="content-container">
+        <div class="content">
+            <h1>Privacy Policy</h1>
+            <p>At swats.lol, we are committed to safeguarding the privacy of our users. This Privacy Policy outlines the types of personal information we collect and how it is used and protected.</p>
+
+            <h2>Information We Collect</h2>
+            <p>We collect personal information that you provide directly to us, such as your username, email address, and any content you upload to our service. Additionally, we collect data automatically, such as your IP address, browser type, and usage data when you interact with the site.</p>
+
+            <h2>How We Use Your Information</h2>
+            <p>We use the information collected to provide and improve our services, monitor usage, enhance security, and communicate with users. Your personal data may also be used to personalize your experience, such as displaying relevant content based on your interactions.</p>
+
+            <h2>Cookies</h2>
+            <p>Cookies are small data files stored on your device. We use cookies to track activity on our site, remember user preferences, and improve overall functionality. You can disable cookies in your browser settings, but doing so may limit certain features of our service.</p>
+
+            <h2>Sharing Your Information</h2>
+            <p>We do not sell, trade, or share your personal information with third parties, except as required by law or to protect the rights and safety of swats.lol or our users. We may share anonymized data with third-party services for analytical purposes.</p>
+
+            <h2>Third-Party Links</h2>
+            <p>swats.lol may contain links to third-party websites or services. We are not responsible for the privacy practices or content of these external sites. We encourage users to review the privacy policies of any third-party websites they visit.</p>
+
+            <h2>Security</h2>
+            <p>We take reasonable measures to protect your personal information from unauthorized access, loss, or misuse. However, no method of online transmission is completely secure, and we cannot guarantee the absolute security of your data.</p>
+
+            <h2>Changes to This Policy</h2>
+            <p>We may update this Privacy Policy from time to time to reflect changes in our practices. We encourage you to review this page periodically to stay informed about how we are protecting your information.</p>
+
+            <h2>Contact Us</h2>
+            <p>If you have any questions about this Privacy Policy, please contact us at <a href="mailto:support@swats.lol" style="color: white;">support@swats.lol</a>.</p>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+        });
+    
+        document.addEventListener('keydown', function(e) {
+            // F12 key
+            if (e.key === 'F12' || e.keyCode === 123) {
+                e.preventDefault();
+            }
+            // Ctrl+Shift+I (open developer tools)
+            if (e.ctrlKey && e.shiftKey && e.key === 'I') {
+                e.preventDefault();
+            }
+            // Ctrl+Shift+J (open developer tools)
+            if (e.ctrlKey && e.shiftKey && e.key === 'J') {
+                e.preventDefault();
+            }
+            // Ctrl+U (view source)
+            if (e.ctrlKey && e.key === 'U') {
+                e.preventDefault();
+            }
+        });
+    </script>
+    <script>
+      (function() {
+          const devTools = { isOpen: false, orientation: null };
+    
+          const threshold = 160; // Threshold for detecting opened dev tools based on window dimensions
+          
+          setInterval(() => {
+              const widthThreshold = window.outerWidth - window.innerWidth > threshold;
+              const heightThreshold = window.outerHeight - window.innerHeight > threshold;
+    
+              if ((widthThreshold || heightThreshold) && !devTools.isOpen) {
+                  devTools.isOpen = true;
+                  // Close the tab when dev tools is detected
+                  window.close();  // This might get blocked by browsers in some cases
+              } else if (!widthThreshold && !heightThreshold && devTools.isOpen) {
+                  devTools.isOpen = false;
+              }
+          }, 500); // Check every 500ms
+      })();
+    </script>
+</body>
+</html>
