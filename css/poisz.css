@@ -11,17 +11,6 @@ cursor: url(images/black_gothic_cross-removebg-preview_1.png) 16 16, auto !impor
     user-select: none;         /* Standard */
 }
 
-
-.background {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background-size: cover;
-    object-fit: cover;
-}
-
 .full-screen-video {
     position: fixed;
     top: 0;
