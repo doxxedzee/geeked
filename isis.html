@@ -278,5 +278,26 @@
       monitorDevTools(); // Start monitoring
   })();
 </script>
+<script>
+  // Function to prevent back navigation on the same page
+  function preventBackNavigation() {
+      // Push the current state into history
+      history.pushState(null, document.title, window.location.href);
+
+      // Set up an event listener for the popstate event
+      window.onpopstate = function(event) {
+          // Check if the previous state is from the same domain
+          if (document.referrer && document.referrer.includes(window.location.hostname)) {
+              // Push the current state into history again to prevent back navigation
+              history.pushState(null, document.title, window.location.href);
+          }
+      };
+  }
+
+  // Call the function on page load
+  window.onload = function() {
+      preventBackNavigation();
+  };
+</script>
 
 </body></html>
