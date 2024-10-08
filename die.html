@@ -74,6 +74,21 @@
   </div>
 </i>
 
+<style>
+  /* Blinking Cursor */
+  @keyframes blinkCursor {
+    50% { border-right-color: transparent; }
+  }
+
+  #typingText {
+    border-right: 2px solid rgba(255, 255, 255, 0.75); /* Blinking cursor effect */
+    display: inline-block;
+    white-space: nowrap;
+    overflow: hidden;
+    animation: blinkCursor 0.75s step-end infinite;
+  }
+</style>
+
 <script>
   const typingTextElement = document.getElementById('typingText');
   const textsArray = document.getElementById('typingTexts').innerHTML.trim().split('<br>'); // Fetch texts and split them
